@@ -3,6 +3,7 @@
 //
 
 #include "StartGameButton.h"
+#include "../Game.h"
 
 
 StartGameButton::StartGameButton() {
@@ -15,6 +16,7 @@ void StartGameButton::drawButton() {
 
 void StartGameButton::execute() {
     std::cout << "start" << std::endl;
+    Game::Run(3);
 }
 
 

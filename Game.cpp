@@ -3,12 +3,7 @@
 //
 
 #include "Game.h"
-
-
-Game::Game() {
-    Menu* m_menu = new Menu();
-}
-
+Menu* Game::m_menu = new Menu();
 void Game::Run(int index) {
     while (true) {
         char input = _getch();

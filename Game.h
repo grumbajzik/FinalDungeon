@@ -10,10 +10,9 @@
 
 
 class Game {
-    Menu* m_menu;
+    static Menu* m_menu;
 public:
-    Game();
-    void Run(int index);
+    static void Run(int index);
 };
 
 
