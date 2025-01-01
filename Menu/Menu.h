@@ -17,7 +17,7 @@ class Menu {
 public:
 
     Menu();
-    void runMenu(char input);
+    void runMenu();
 
 private:
     void selectButton(char input);

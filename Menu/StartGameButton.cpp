@@ -16,7 +16,7 @@ void StartGameButton::drawButton() {
 
 void StartGameButton::execute() {
     std::cout << "start" << std::endl;
-    Game::Run(3);
+    Game::Run(2);
 }
 
 

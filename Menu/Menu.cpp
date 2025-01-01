@@ -2,6 +2,7 @@
 // Created by Admin on 27.12.2024.
 //
 
+#include <conio.h>
 #include "Menu.h"
 
 #include "EditPlayerSkin.h"
@@ -64,10 +65,15 @@ void Menu::displeyTitleOfGame() {
 }
 
 
-void Menu::runMenu(char input) {
-    selectButton(input);
-    pressButton(input);
+void Menu::runMenu() {
     displayMenu();
+    while(true) {
+
+        char input = _getch();
+        selectButton(input);
+        pressButton(input);
+        displayMenu();
+    }
 }
 
 
