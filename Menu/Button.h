@@ -6,13 +6,20 @@
 #define DUNGEON_BUTTON_H
 
 
-#include <string>
+#include <iostream>
 
 class Button {
-    std::string m_label;
+
 protected:
-    Button(std::string label);
-    void virtual Command();
+
+    std::string m_label;
+
+    public:
+
+    Button();
+    virtual void execute() = 0;
+    virtual void drawButton() = 0;
+
 };
 
 
