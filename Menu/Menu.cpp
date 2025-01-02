@@ -8,6 +8,7 @@
 #include "EditPlayerSkin.h"
 #include "ExitGame.h"
 #include "StartGameButton.h"
+#include "../Game.h"
 
 Menu::Menu() {
     m_buttons.push_back(new StartGameButton());
@@ -67,14 +68,26 @@ void Menu::displeyTitleOfGame() {
 
 void Menu::runMenu() {
     displayMenu();
-    while(true) {
-
-        char input = _getch();
+    char input = '5';
+    while(input != '\r') {
+        input = _getch();
         selectButton(input);
         pressButton(input);
         displayMenu();
     }
 }
+
+void Menu::runChosenMenu() {
+    //TODO tady se budou volat metody na vytvoreni podmenu editskin a startgame, ale nefuguje to
+    std::cout << "==========================" << std::endl;
+    if (m_index == 1) {
+        dynamic_cast<EditPlayerSkin*>(m_buttons.at(1))->runEditPlayerSkinMenu();
+    }
+    // }else if (m_index == 2) {
+    //     m_buttons.at(2)->
+    // }
+}
+
 
 
 

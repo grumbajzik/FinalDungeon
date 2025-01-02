@@ -18,15 +18,13 @@ public:
 
     Menu();
     void runMenu();
+    void runChosenMenu();
 
 private:
     void selectButton(char input);
     void pressButton(char input);
     void displayMenu();
     void displeyTitleOfGame();
-
-
-
 
 };
 

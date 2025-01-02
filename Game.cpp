@@ -4,6 +4,7 @@
 
 #include "Game.h"
 Menu* Game::m_menu = new Menu();
+
 void Game::Run(int index) {
         switch (index) {
             case 0:
@@ -11,6 +12,7 @@ void Game::Run(int index) {
             //Tady to bude volat metodu která bude volat vytváření hlavního menu.
             break;
             case 1:
+                m_menu->runChosenMenu();
                 //Tady to bude volat metodu na vytvoření Options Menu
                     break;
             case 2:

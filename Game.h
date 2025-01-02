@@ -8,7 +8,6 @@
 #include <conio.h>
 
 
-
 class Game {
     static Menu* m_menu;
 public:
