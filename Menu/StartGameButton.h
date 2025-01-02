@@ -15,6 +15,13 @@ class StartGameButton : public Button{
     void execute() override;
     void drawButton() override;
 
+    void runEditPlayerSkinMenu();
+
+private:
+
+    void selectTypeOfPlayer(char input);
+
+    void drawMenuWithTypeOfPlayer();
 };
 
 

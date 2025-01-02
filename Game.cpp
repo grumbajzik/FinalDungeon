@@ -10,13 +10,14 @@ void Game::Run(int index) {
             case 0:
                 m_menu->runMenu();
             //Tady to bude volat metodu která bude volat vytváření hlavního menu.
-            break;
+                break;
             case 1:
                 m_menu->runChosenMenu();
                 //Tady to bude volat metodu na vytvoření Options Menu
-                    break;
+                break;
             case 2:
                 std::cout<<"JEDE HRa"<<std::endl;
-                    break;
+                system("pause");
+                break;
         }
     }

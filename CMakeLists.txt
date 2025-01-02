@@ -9,4 +9,10 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         Menu/EditPlayerSkin.cpp
         Menu/EditPlayerSkin.h
         Menu/ExitGame.cpp
-        Menu/ExitGame.h)
+        Menu/ExitGame.h
+        Player/Player.cpp
+        Player/Player.h
+        Player/Archer.cpp
+        Player/Archer.h
+        Player/Warrior.cpp
+        Player/Warrior.h)
