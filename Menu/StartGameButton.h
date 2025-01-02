@@ -5,9 +5,13 @@
 #ifndef STARTGAMEBUTTON_H
 #define STARTGAMEBUTTON_H
 #include "Button.h"
-
+#include <vector>
 
 class StartGameButton : public Button{
+
+    std::vector<std::string> m_typeOfPlayer;
+    int m_index;
+
 
     public:
 

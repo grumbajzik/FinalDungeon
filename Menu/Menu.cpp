@@ -78,14 +78,12 @@ void Menu::runMenu() {
 }
 
 void Menu::runChosenMenu() {
-    //TODO tady se budou volat metody na vytvoreni podmenu editskin a startgame, ale nefuguje to
     std::cout << "==========================" << std::endl;
     if (m_index == 1) {
         dynamic_cast<EditPlayerSkin*>(m_buttons.at(1))->runEditPlayerSkinMenu();
+    } else if (m_index == 0) {
+        dynamic_cast<StartGameButton*>(m_buttons.at(0))->runEditPlayerSkinMenu();
     }
-    // }else if (m_index == 2) {
-    //     m_buttons.at(2)->
-    // }
 }
 
 
