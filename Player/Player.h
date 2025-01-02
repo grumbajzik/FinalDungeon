@@ -9,8 +9,8 @@
 
 
 enum PlayerType {
-    Archertype,
-    Warriortype
+    ArcherType,
+    WarriorType
 };
 
 class Player {

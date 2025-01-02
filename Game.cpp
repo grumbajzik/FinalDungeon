@@ -4,6 +4,8 @@
 
 #include "Game.h"
 Menu* Game::m_menu = new Menu();
+Player* Game::m_player = nullptr;
+PlayerType Game::m_playerType;
 
 void Game::Run(int index) {
         switch (index) {
@@ -16,6 +18,7 @@ void Game::Run(int index) {
                 //Tady to bude volat metodu na vytvoření Options Menu
                 break;
             case 2:
+                m_player->createPlayer(m_playerType);
                 std::cout<<"JEDE HRa"<<std::endl;
                 system("pause");
                 break;

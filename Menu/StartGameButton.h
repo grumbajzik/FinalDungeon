@@ -7,19 +7,20 @@
 #include "Button.h"
 #include <vector>
 
+#include "../Player/Player.h"
+
 class StartGameButton : public Button{
 
     std::vector<std::string> m_typeOfPlayer;
     int m_index;
-
 
     public:
 
     StartGameButton();
     void execute() override;
     void drawButton() override;
-
     void runEditPlayerSkinMenu();
+    PlayerType getTypeOfPlayer();
 
 private:
 

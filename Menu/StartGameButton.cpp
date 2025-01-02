@@ -63,8 +63,19 @@ void StartGameButton::runEditPlayerSkinMenu() {
         input = getch();
         selectTypeOfPlayer(input);
     }
+    Game::m_playerType = getTypeOfPlayer();
     Game::Run(2);
 }
+
+PlayerType StartGameButton::getTypeOfPlayer() {
+    if (m_index == 0) {
+        return PlayerType::ArcherType;
+    }else {
+        return PlayerType::WarriorType;
+    }
+}
+
+
 
 
 

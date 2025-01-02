@@ -7,10 +7,15 @@
 #include "Menu/Menu.h"
 #include <conio.h>
 
+#include "Player/Player.h"
+
 
 class Game {
     static Menu* m_menu;
+    static Player* m_player;
 public:
+    static PlayerType m_playerType;
+
     static void Run(int index);
 };
 
