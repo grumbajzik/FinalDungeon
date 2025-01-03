@@ -5,6 +5,7 @@
 #include "EditPlayerSkin.h"
 
 #include "../Game.h"
+#include "../Options.h"
 
 EditPlayerSkin::EditPlayerSkin() {
     m_label = "EditPlayerSkin";
@@ -69,6 +70,8 @@ void EditPlayerSkin::runEditPlayerSkinMenu() {
         input = _getch();
         selectSkin(input);
     }
+    Options::setPlayerSkin(m_chosenSkin);
+
     Game::Run(0);
 }
 

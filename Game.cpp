@@ -3,6 +3,8 @@
 //
 
 #include "Game.h"
+
+#include "Options.h"
 Menu* Game::m_menu = new Menu();
 Player* Game::m_player = nullptr;
 PlayerType Game::m_playerType;
@@ -19,6 +21,7 @@ void Game::Run(int index) {
                 break;
             case 2:
                 m_player->createPlayer(m_playerType);
+                std:: cout << "Player skin: "<<Options::getPlayerSkin() << std::endl;
                 std::cout<<"JEDE HRa"<<std::endl;
                 system("pause");
                 break;

@@ -64,6 +64,7 @@ void StartGameButton::runEditPlayerSkinMenu() {
         selectTypeOfPlayer(input);
     }
     Game::m_playerType = getTypeOfPlayer();
+    system("cls");
     Game::Run(2);
 }
 

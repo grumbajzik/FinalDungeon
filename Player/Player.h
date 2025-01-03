@@ -27,6 +27,8 @@ protected:
 
     static Player* createPlayer(PlayerType playerType);
 
+    //virtual void attack() = 0;
+
 };
 
 
