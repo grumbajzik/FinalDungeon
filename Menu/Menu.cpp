@@ -82,7 +82,7 @@ void Menu::runChosenMenu() {
     if (m_index == 1) {
         dynamic_cast<EditPlayerSkin*>(m_buttons.at(1))->runEditPlayerSkinMenu();
     } else if (m_index == 0) {
-        dynamic_cast<StartGameButton*>(m_buttons.at(0))->runEditPlayerSkinMenu();
+        dynamic_cast<StartGameButton*>(m_buttons.at(0))->runStartGameMenu();
     }
 }
 

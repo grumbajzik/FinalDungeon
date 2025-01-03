@@ -8,6 +8,8 @@
 Menu* Game::m_menu = new Menu();
 Player* Game::m_player = nullptr;
 PlayerType Game::m_playerType;
+std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
+std::vector<CloseCombatEnemy*> Game::m_closeCombatEnemies = {};
 
 void Game::Run(int index) {
         switch (index) {

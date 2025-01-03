@@ -3,6 +3,9 @@
 //
 
 #include "StartGameButton.h"
+
+#include <conio.h>
+
 #include "../Game.h"
 
 
@@ -55,7 +58,7 @@ void StartGameButton::selectTypeOfPlayer(char input) {
     }
 }
 
-void StartGameButton::runEditPlayerSkinMenu() {
+void StartGameButton::runStartGameMenu() {
     char input = '5';
 
     while(input != '\r') {

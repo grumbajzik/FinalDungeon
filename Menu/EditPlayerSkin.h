@@ -5,6 +5,7 @@
 #ifndef EDITPLAYERSKIN_H
 #define EDITPLAYERSKIN_H
 #include <vector>
+#include <conio.h>
 
 #include "Button.h"
 

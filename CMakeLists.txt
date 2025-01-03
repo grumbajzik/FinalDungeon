@@ -15,4 +15,24 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         Player/Archer.cpp
         Player/Archer.h
         Player/Warrior.cpp
-        Player/Warrior.h)
+        Player/Warrior.h
+        EnemyObject/Monster/ArtilleryMonster.cpp
+        EnemyObject/Monster/ArtilleryMonster.h
+        EnemyObject/Monster/WeakArtilleryEnemy.cpp
+        EnemyObject/Monster/WeakArtilleryEnemy.h
+        EnemyObject/Monster/StrongArtilleryEnemy.cpp
+        EnemyObject/Monster/StrongArtilleryEnemy.h
+        EnemyObject/Monster/CloseCombatEnemy.cpp
+        EnemyObject/Monster/CloseCombatEnemy.h
+        EnemyObject/Monster/WeakCloseCombatEnemy.cpp
+        EnemyObject/Monster/WeakCloseCombatEnemy.h
+        EnemyObject/Monster/StrongCloseCombatEnemy.cpp
+        EnemyObject/Monster/StrongCloseCombatEnemy.h
+        EnemyObject/Monster/MonsterFactory.cpp
+        EnemyObject/Monster/MonsterFactory.h
+        EnemyObject/Monster/WeakMonsterFactory.cpp
+        EnemyObject/Monster/WeakMonsterFactory.h
+        EnemyObject/Monster/StrongMonsterFactory.cpp
+        EnemyObject/Monster/StrongMonsterFactory.h
+        Menu/DifficultyOfGameButton.cpp
+        Menu/DifficultyOfGameButton.h)
