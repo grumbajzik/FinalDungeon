@@ -7,6 +7,10 @@
 #include "WeakArtilleryEnemy.h"
 #include "WeakCloseCombatEnemy.h"
 
+WeakMonsterFactory::WeakMonsterFactory() {
+}
+
+
 ArtilleryMonster *WeakMonsterFactory::createArtilleryMonster() {
     return new WeakArtilleryEnemy(80,20,10);
 }

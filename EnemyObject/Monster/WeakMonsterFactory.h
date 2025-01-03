@@ -10,6 +10,7 @@
 class WeakMonsterFactory : public MonsterFactory{
 
     public:
+    WeakMonsterFactory();
 
     ArtilleryMonster *createArtilleryMonster() override;
     CloseCombatEnemy *createCloseCombatEnemy() override;

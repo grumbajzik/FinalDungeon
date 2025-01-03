@@ -35,4 +35,6 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         EnemyObject/Monster/StrongMonsterFactory.cpp
         EnemyObject/Monster/StrongMonsterFactory.h
         Menu/DifficultyOfGameButton.cpp
-        Menu/DifficultyOfGameButton.h)
+        Menu/DifficultyOfGameButton.h
+        Menu/HowToPlayButton.cpp
+        Menu/HowToPlayButton.h)

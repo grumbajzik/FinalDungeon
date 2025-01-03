@@ -16,6 +16,8 @@ enum TypeOfFactory {
 class MonsterFactory {
     virtual ArtilleryMonster* createArtilleryMonster() = 0;
     virtual CloseCombatEnemy* createCloseCombatEnemy() = 0;
+
+    public:
     static MonsterFactory* getFactory(TypeOfFactory typeOfFactory);
 };
 

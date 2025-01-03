@@ -5,14 +5,18 @@
 #include <conio.h>
 #include "Menu.h"
 
+#include "DifficultyOfGameButton.h"
 #include "EditPlayerSkin.h"
 #include "ExitGame.h"
+#include "HowToPlayButton.h"
 #include "StartGameButton.h"
 #include "../Game.h"
 
 Menu::Menu() {
     m_buttons.push_back(new StartGameButton());
     m_buttons.push_back(new EditPlayerSkin());
+    m_buttons.push_back(new DifficultyOfGameButton());
+    m_buttons.push_back(new HowToPlayButton());
     m_buttons.push_back(new ExitGame());
     m_index = 0;
     m_chosenButton = m_buttons.at(m_index);
@@ -78,11 +82,19 @@ void Menu::runMenu() {
 }
 
 void Menu::runChosenMenu() {
-    std::cout << "==========================" << std::endl;
-    if (m_index == 1) {
-        dynamic_cast<EditPlayerSkin*>(m_buttons.at(1))->runEditPlayerSkinMenu();
-    } else if (m_index == 0) {
-        dynamic_cast<StartGameButton*>(m_buttons.at(0))->runStartGameMenu();
+    switch (m_index) {
+        case 0:
+            dynamic_cast<StartGameButton*>(m_buttons.at(0))->runStartGameMenu();
+            break;
+        case 1:
+            dynamic_cast<EditPlayerSkin*>(m_buttons.at(1))->runEditPlayerSkinMenu();
+            break;
+        case 2:
+            dynamic_cast<DifficultyOfGameButton*>(m_buttons.at(2))->runDifficultyOfGameMenu();
+            break;
+        case 3:
+            dynamic_cast<HowToPlayButton*>(m_buttons.at(3))->runHowToPlayMenu();
+            break;
     }
 }
 

@@ -11,6 +11,8 @@ class StrongMonsterFactory : public MonsterFactory{
 
     public:
 
+    StrongMonsterFactory();
+
     ArtilleryMonster *createArtilleryMonster() override;
     CloseCombatEnemy *createCloseCombatEnemy() override;
 

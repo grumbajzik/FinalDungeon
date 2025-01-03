@@ -7,6 +7,9 @@
 #include "StrongArtilleryEnemy.h"
 #include "StrongCloseCombatEnemy.h"
 
+StrongMonsterFactory::StrongMonsterFactory() {
+}
+
 ArtilleryMonster *StrongMonsterFactory::createArtilleryMonster() {
     return new StrongArtilleryEnemy(120,35,30);
 }
