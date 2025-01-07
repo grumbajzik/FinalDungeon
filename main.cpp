@@ -1,10 +1,13 @@
 #include <iostream>
 #include "Game.h"
 #include "Options.h"
+#include "Map/Room.h"
 
 int main() {
-
-    Game::Run(0);
+    Room* rom = new Room();
+    rom->printRoom();
+    std::cout<<"adsfaswfds"<<std::endl;
+    //    Game::Run(0);
 
     // std::cout<<Options::getPlayerType() << " " << Options::getPlayerSkin() <<std::endl;
     // Options::setPlayerType("Archer");

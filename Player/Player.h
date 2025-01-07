@@ -5,7 +5,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <iostream>
-
+#include "../Map/Tile.h"
 
 
 enum PlayerType {
@@ -20,6 +20,7 @@ protected:
     int m_health;
     int m_defense;
     int m_strength;
+    Tile* playerTile;
 
     Player();
 

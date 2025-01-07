@@ -3,7 +3,7 @@ project(Dungeon)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Menu/Menu.cpp Menu/Menu.h Options.cpp Options.h Map/Tyle.cpp Map/Tyle.h
+add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Menu/Menu.cpp Menu/Menu.h Options.cpp Options.h Map/Tile.cpp Map/Tile.h
         Menu/StartGameButton.cpp
         Menu/StartGameButton.h
         Menu/EditPlayerSkin.cpp
@@ -37,4 +37,4 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         Menu/DifficultyOfGameButton.cpp
         Menu/DifficultyOfGameButton.h
         Menu/HowToPlayButton.cpp
-        Menu/HowToPlayButton.h)
+        Menu/HowToPlayButton.h Map/Room.cpp Map/Room.h)

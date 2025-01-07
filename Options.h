@@ -10,12 +10,9 @@
 
 class Options {
     static char s_playerSkin;
-    static std::string s_playerType;//FIXME bude potřeba změnit na enum který se bude používat při vytváření hráče
 public:
     static void setPlayerSkin(char skin);
-    static void setPlayerType(std::string type);
     static char getPlayerSkin();
-    static std::string getPlayerType();
 };
 
 
