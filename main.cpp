@@ -4,9 +4,10 @@
 #include "Map/Room.h"
 
 int main() {
-    Room* rom = new Room();
-    rom->printRoom();
+    Room* room = new Room();
+    room->printRoom();
     std::cout<<"adsfaswfds"<<std::endl;
+    system("pause");
     //    Game::Run(0);
 
     // std::cout<<Options::getPlayerType() << " " << Options::getPlayerSkin() <<std::endl;

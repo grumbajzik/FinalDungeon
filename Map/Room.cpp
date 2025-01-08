@@ -11,6 +11,7 @@
 #include <conio.h>
 #include <thread>
 
+#include "../Options.h"
 #include "../Player/Player.h"
 
 
@@ -20,7 +21,7 @@ Room::Room() {
     m_originalRoom = m_room;
     m_id = s_id++;
     m_lastAttack = {-1,-1};
-    m_playerSkinInRoom = '*'; //default nastaveni
+    m_playerSkinInRoom = Options::getPlayerSkin(); //default nastaveni
 }
 
 int Room::getId(){

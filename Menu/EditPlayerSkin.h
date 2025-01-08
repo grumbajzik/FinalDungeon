@@ -14,7 +14,7 @@ class EditPlayerSkin : public Button {
 
     std::vector<char> m_skins;
     char m_chosenSkin;
-    int m_skinIndex = 0;
+    int m_skinIndex;
 
     public:
 
