@@ -6,11 +6,19 @@
 #define PLAYER_H
 #include <iostream>
 #include "../Map/Tile.h"
+#include "../Map/Room.h"
 
+
+class Room;
 
 enum PlayerType {
     ArcherType,
     WarriorType
+};
+
+struct Position {
+    int x;
+    int y;
 };
 
 class Player {
@@ -21,12 +29,16 @@ protected:
     int m_defense;
     int m_strength;
     Tile* playerTile;
+    Position playerPosition;
 
-    Player();
 
     public:
 
+    Player();
+
     static Player* createPlayer(PlayerType playerType);
+
+    void move(Room* room, char input);
 
     //virtual void attack() = 0;
 

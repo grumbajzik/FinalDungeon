@@ -6,6 +6,7 @@
 
 #include "Options.h"
 Menu* Game::m_menu = new Menu();
+Room* Game::m_room = new Room();
 Player* Game::m_player = nullptr;
 MonsterFactory* Game::m_monsterFactory = nullptr;
 PlayerType Game::m_playerType;
@@ -27,10 +28,16 @@ void Game::Run(int index) {
             case 2:
                 m_player->createPlayer(m_playerType);
                 m_monsterFactory = m_monsterFactory->getFactory(m_typeOfFactory);
-                std:: cout << "Player skin: "<<Options::getPlayerSkin() << std::endl;
-                std::cout << "Factory type: "<< m_typeOfFactory << std::endl;
-                std::cout<<"JEDE HRa"<<std::endl;
-                system("pause");
+                startGame();
                 break;
         }
     }
+
+
+void Game::startGame() {
+    while (true) {
+        m_room->printRoom();
+
+        //m_room->refreshRoom();
+    }
+}

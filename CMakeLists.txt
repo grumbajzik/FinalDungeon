@@ -37,4 +37,6 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         Menu/DifficultyOfGameButton.cpp
         Menu/DifficultyOfGameButton.h
         Menu/HowToPlayButton.cpp
-        Menu/HowToPlayButton.h Map/Room.cpp Map/Room.h)
+        Menu/HowToPlayButton.h
+        Map/Room.h
+        Map/Room.cpp)

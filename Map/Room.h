@@ -10,7 +10,7 @@
 #include <windows.h>
 #include "mutex"
 #include "Tile.h"
-//#include "../Player/Player.h"
+#include "../Player/Player.h"
 
 
 class Room{
@@ -29,8 +29,6 @@ public:
 
     int getSizeOfRoomX();
     int getSizeOfRoomY();
-
-    //void setPlayerSkinInRoom(Player* player);
 
 private:
     std::mutex m_consoleMutex;

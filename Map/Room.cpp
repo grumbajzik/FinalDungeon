@@ -21,17 +21,12 @@ Room::Room() {
     m_originalRoom = m_room;
     m_id = s_id++;
     m_lastAttack = {-1,-1};
-    m_playerSkinInRoom = Options::getPlayerSkin(); //default nastaveni
+    m_playerSkinInRoom = Options::getPlayerSkin();
 }
 
 int Room::getId(){
     return m_id;
 }
-/*
-void Room::setPlayerSkinInRoom(Player* player) {
-    m_playerSkinInRoom = player->getPlayerSkin();
-}
-*/
 
 void Room::printRoom() {
     clearRoom();
@@ -50,7 +45,7 @@ void Room::refreshRoom() {
     for (auto &row: m_room) {
         std::string value = "";
         for (auto &cell: row) {
-            value += (cell->getIcon() + ' ');
+            value += cell->getIcon() + ' ';
         }
         std::cout << value << std::endl;
     }
@@ -79,14 +74,15 @@ std::vector<std::vector<Tile*>> Room::getRoom() {
     return m_room;
 }
 
-//void Room::updatePlayerPosition(int x,int y, bool newPosition) {
-//    if (newPosition) {
-//        m_playerPreviousMove = m_originalRoom.at(x).at(y);
-//        m_room.at(x).at(y) = m_playerSkinInRoom;
-//    } else {
-//        m_room.at(x).at(y) = m_playerPreviousMove;
-//    }
-//}
+void Room::updatePlayerPosition(int x,int y, bool newPosition) {
+    //TODO nejede to more
+    if (newPosition) {
+        m_playerPreviousMove = m_originalRoom.at(x).at(y);
+        m_room.at(x).at(y) = m_playerSkinInRoom;
+    } else {
+        m_room.at(x).at(y) = m_playerPreviousMove;
+    }
+}
 
 //void Room::drawPlayerAttack(int x, int y, bool isAttack) {
 //
