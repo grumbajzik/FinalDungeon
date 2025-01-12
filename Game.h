@@ -15,12 +15,12 @@
 
 class Game {
     static Menu* m_menu;
-    static Player* m_player;
+    Player* m_player;
     static Room* m_room;
     static MonsterFactory* m_monsterFactory;
     static std::vector<ArtilleryMonster*> m_artilleryMonsters;
     static std::vector<CloseCombatEnemy*> m_closeCombatEnemies;
-
+    static void setPlayer(Player* player);
 public:
     static PlayerType m_playerType;
     static TypeOfFactory m_typeOfFactory;

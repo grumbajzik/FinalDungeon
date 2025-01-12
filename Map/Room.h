@@ -34,11 +34,11 @@ private:
     std::mutex m_consoleMutex;
     std::vector<std::vector<Tile*>> m_room;
     std::vector<std::vector<Tile*>> m_originalRoom;
-    char m_playerSkinInRoom;
+    Tile* m_playerSkinInRoom;
     static int s_id;
     int m_id ;
     std::pair<int,int> m_lastAttack; //na uchovani posledniho utoku na blizko
-    std::string m_playerPreviousMove = " ";
+    Tile* m_playerPreviousMove;
     std::string m_attackPrevoiousSign = " ";
     std::vector<std::vector<Tile*>> generateRoom();
     void clearRoom();

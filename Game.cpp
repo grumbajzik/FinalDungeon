@@ -7,7 +7,6 @@
 #include "Options.h"
 Menu* Game::m_menu = new Menu();
 Room* Game::m_room = new Room();
-Player* Game::m_player = nullptr;
 MonsterFactory* Game::m_monsterFactory = nullptr;
 PlayerType Game::m_playerType;
 std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
@@ -26,7 +25,7 @@ void Game::Run(int index) {
                 //Tady to bude volat metodu na vytvoření Options Menu
                 break;
             case 2:
-                m_player->createPlayer(m_playerType);
+//                setPlayer(Player::createPlayer(m_playerType));
                 m_monsterFactory = m_monsterFactory->getFactory(m_typeOfFactory);
                 startGame();
                 break;
@@ -35,9 +34,13 @@ void Game::Run(int index) {
 
 
 void Game::startGame() {
+    m_room->updatePlayerPosition(3,3,true);
+    Player* player = Player::createPlayer(m_playerType);
+
     while (true) {
         m_room->printRoom();
-
-        //m_room->refreshRoom();
+        player->move(m_room,'w');
+        m_room->refreshRoom();
+        system("pause");
     }
 }

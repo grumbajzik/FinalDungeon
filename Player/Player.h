@@ -34,6 +34,7 @@ protected:
 
     public:
 
+
     Player();
 
     static Player* createPlayer(PlayerType playerType);

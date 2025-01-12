@@ -21,7 +21,7 @@ Room::Room() {
     m_originalRoom = m_room;
     m_id = s_id++;
     m_lastAttack = {-1,-1};
-    m_playerSkinInRoom = Options::getPlayerSkin();
+    m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
 }
 
 int Room::getId(){
@@ -39,13 +39,14 @@ void Room::printRoom() {
 }
 
 void Room::refreshRoom() {
-    std::lock_guard<std::mutex> lock(m_consoleMutex); // Zamknutí přístupu
+//    std::lock_guard<std::mutex> lock(m_consoleMutex); // Zamknutí přístupu
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleCursorPosition(hConsole, {0, 0});
     for (auto &row: m_room) {
         std::string value = "";
         for (auto &cell: row) {
-            value += cell->getIcon() + ' ';
+            value += cell->getIcon();
+            value += ' ';
         }
         std::cout << value << std::endl;
     }
@@ -75,8 +76,8 @@ std::vector<std::vector<Tile*>> Room::getRoom() {
 }
 
 void Room::updatePlayerPosition(int x,int y, bool newPosition) {
-    //TODO nejede to more
     if (newPosition) {
+
         m_playerPreviousMove = m_originalRoom.at(x).at(y);
         m_room.at(x).at(y) = m_playerSkinInRoom;
     } else {
