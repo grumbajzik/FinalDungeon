@@ -13,6 +13,8 @@ class Warrior : public Player{
 
     Warrior(int health, int defence, int strength);
 
+    void attack(Room* room, char input) override;
+
 };
 
 

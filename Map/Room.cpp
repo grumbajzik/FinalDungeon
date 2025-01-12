@@ -15,13 +15,13 @@
 #include "../Player/Player.h"
 
 
+Tile* Room::m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
 
 Room::Room() {
     m_room = generateRoom();
     m_originalRoom = m_room;
     m_id = s_id++;
     m_lastAttack = {-1,-1};
-    m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
 }
 
 int Room::getId(){
@@ -77,7 +77,6 @@ std::vector<std::vector<Tile*>> Room::getRoom() {
 
 void Room::updatePlayerPosition(int x,int y, bool newPosition) {
     if (newPosition) {
-
         m_playerPreviousMove = m_originalRoom.at(x).at(y);
         m_room.at(x).at(y) = m_playerSkinInRoom;
     } else {
@@ -102,37 +101,38 @@ void Room::updatePlayerPosition(int x,int y, bool newPosition) {
 //    }
 //}
 
-//void Room::drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAttack) {
-//    if (isAttack) {
-//        for (int i = 0; i < range; i++) {
-//            if (m_room.at(x).at(y) != "#") {
-//                m_attackPrevoiousSign = m_originalRoom.at(x).at(y);
-//                m_room.at(x).at(y) = 'o';
-////                refreshRoom();
-//                std::this_thread::sleep_for(std::chrono::milliseconds(70));
-//                m_room.at(x).at(y) = m_attackPrevoiousSign;
-//                switch (direction) {
-//                    case 1:
-//                        x--;
-//                        break;
-//                    case 2:
-//                        x++;
-//                        break;
-//                    case 3:
-//                        y--;
-//                        break;
-//                    case 4:
-//                        y++;
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }else{
-//                m_room.at(x).at(y) = "#";
-//            }
-//        }
-//    }
-//}
+void Room::drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAttack) {
+    if (isAttack) {
+        for (int i = 0; i < range; i++) {
+            if (m_room.at(x).at(y)->getIcon() != '#') {
+                m_attackPrevoiousTile = m_originalRoom.at(x).at(y);
+                m_room.at(x).at(y) = new Tile('o');
+//                refreshRoom();
+                std::this_thread::sleep_for(std::chrono::milliseconds(70));
+                m_room.at(x).at(y) = m_attackPrevoiousTile;
+                switch (direction) {
+                    case 1:
+                        x--;
+                        break;
+                    case 2:
+                        x++;
+                        break;
+                    case 3:
+                        y--;
+                        break;
+                    case 4:
+                        y++;
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+
+                m_room.at(x).at(y) = m_originalRoom.at(x).at(y);
+            }
+        }
+    }
+}
 
 void Room::clearRoom() {
     system("cls");

@@ -31,9 +31,7 @@ protected:
     Tile* playerTile;
     Position playerPosition;
 
-
     public:
-
 
     Player();
 
@@ -41,7 +39,7 @@ protected:
 
     void move(Room* room, char input);
 
-    //virtual void attack() = 0;
+    virtual void attack(Room* room, char input) = 0;
 
 };
 

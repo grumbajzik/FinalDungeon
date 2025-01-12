@@ -4,6 +4,8 @@
 
 #include "Game.h"
 
+#include <conio.h>
+
 #include "Options.h"
 Menu* Game::m_menu = new Menu();
 Room* Game::m_room = new Room();
@@ -36,11 +38,12 @@ void Game::Run(int index) {
 void Game::startGame() {
     m_room->updatePlayerPosition(3,3,true);
     Player* player = Player::createPlayer(m_playerType);
+    m_room->printRoom();
 
     while (true) {
-        m_room->printRoom();
-        player->move(m_room,'w');
+        char input = getch();
+        player->move(m_room,input);
+        player->attack(m_room,input);
         m_room->refreshRoom();
-        system("pause");
     }
 }

@@ -26,6 +26,7 @@ public:
     void drawTrap(int x, int y, char trap);
     void drawMonster(int x, int y, char sign);
     void drawArtilleryAttack(int x, int y, bool warning);
+    void setPlayerSkin(char skin);
 
     int getSizeOfRoomX();
     int getSizeOfRoomY();
@@ -34,12 +35,12 @@ private:
     std::mutex m_consoleMutex;
     std::vector<std::vector<Tile*>> m_room;
     std::vector<std::vector<Tile*>> m_originalRoom;
-    Tile* m_playerSkinInRoom;
+    static Tile* m_playerSkinInRoom;
     static int s_id;
     int m_id ;
     std::pair<int,int> m_lastAttack; //na uchovani posledniho utoku na blizko
     Tile* m_playerPreviousMove;
-    std::string m_attackPrevoiousSign = " ";
+    Tile* m_attackPrevoiousTile = nullptr;
     std::vector<std::vector<Tile*>> generateRoom();
     void clearRoom();
 };

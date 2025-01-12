@@ -32,7 +32,6 @@ void Player::move(Room* room, char input) {
     //    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     room->updatePlayerPosition(playerPosition.x,playerPosition.y, false);
 
-
     switch (input) {
         case 'w':
             if(playerPosition.x > 1) {

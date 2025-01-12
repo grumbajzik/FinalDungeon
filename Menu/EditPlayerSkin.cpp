@@ -71,7 +71,6 @@ void EditPlayerSkin::runEditPlayerSkinMenu() {
         selectSkin(input);
     }
     Options::setPlayerSkin(m_chosenSkin);
-
     Game::Run(0);
 }
 

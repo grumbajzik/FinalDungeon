@@ -7,12 +7,9 @@
 
 char Options::s_playerSkin = '*';
 
-
 char Options::getPlayerSkin() {
     return s_playerSkin;
 }
-
-
 
 void Options::setPlayerSkin(char skin) {
     s_playerSkin = skin;

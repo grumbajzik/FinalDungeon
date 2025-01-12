@@ -7,11 +7,18 @@
 #include "Player.h"
 
 
+
+
 class Archer : public Player{
+
+    Position bulletPosition;
+    int m_attackRange;
 
     public:
 
     Archer(int health, int defence, int strength);
+
+    void attack(Room* room, char input) override;
 
 
 };
