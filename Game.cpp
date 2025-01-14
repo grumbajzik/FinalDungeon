@@ -8,7 +8,7 @@
 
 #include "Options.h"
 Menu* Game::m_menu = new Menu();
-Room* Game::m_room = new Room();
+Room* Game::m_room = nullptr;
 MonsterFactory* Game::m_monsterFactory = nullptr;
 PlayerType Game::m_playerType;
 std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
@@ -36,6 +36,7 @@ void Game::Run(int index) {
 
 
 void Game::startGame() {
+    m_room = new Room();
     m_room->updatePlayerPosition(3,3,true);
     Player* player = Player::createPlayer(m_playerType);
     m_room->printRoom();

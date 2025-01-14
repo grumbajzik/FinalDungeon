@@ -15,13 +15,13 @@
 #include "../Player/Player.h"
 
 
-Tile* Room::m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
 
 Room::Room() {
     m_room = generateRoom();
     m_originalRoom = m_room;
     m_id = s_id++;
     m_lastAttack = {-1,-1};
+    m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
 }
 
 int Room::getId(){
@@ -107,7 +107,7 @@ void Room::drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAt
             if (m_room.at(x).at(y)->getIcon() != '#') {
                 m_attackPrevoiousTile = m_originalRoom.at(x).at(y);
                 m_room.at(x).at(y) = new Tile('o');
-//                refreshRoom();
+                refreshRoom();
                 std::this_thread::sleep_for(std::chrono::milliseconds(70));
                 m_room.at(x).at(y) = m_attackPrevoiousTile;
                 switch (direction) {
