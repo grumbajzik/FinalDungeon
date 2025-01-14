@@ -9,6 +9,8 @@
 
 class Warrior : public Player{
 
+    Position weaponPosition;
+
     public:
 
     Warrior(int health, int defence, int strength);
