@@ -7,6 +7,7 @@
 #include <conio.h>
 
 #include "Options.h"
+#include "EnemyObject/Trap/StaticTrap.h"
 Menu* Game::m_menu = new Menu();
 Room* Game::m_room = nullptr;
 MonsterFactory* Game::m_monsterFactory = nullptr;
@@ -27,7 +28,6 @@ void Game::Run(int index) {
                 //Tady to bude volat metodu na vytvoření Options Menu
                 break;
             case 2:
-//                setPlayer(Player::createPlayer(m_playerType));
                 m_monsterFactory = m_monsterFactory->getFactory(m_typeOfFactory);
                 startGame();
                 break;
@@ -39,12 +39,17 @@ void Game::startGame() {
     m_room = new Room();
     m_room->updatePlayerPosition(3,3,true);
     Player* player = Player::createPlayer(m_playerType);
+    StaticTrap* trap = StaticTrap::createTrap();
+    trap->makeTrapInRoom(m_room);
     m_room->printRoom();
+
 
     while (true) {
         char input = getch();
         player->move(m_room,input);
         player->attack(m_room,input);
         m_room->refreshRoom();
+        trap->treatPlayer(player);
+        player->printInfo();
     }
 }

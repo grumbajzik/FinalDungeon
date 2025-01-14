@@ -146,10 +146,10 @@ int Room::getSizeOfRoomY() {
     return m_room[0].size();
 }
 
-//void Room::drawTrap(int x, int y, char trap) {
-//    m_originalRoom.at(x).at(y) = trap;
-//    m_room.at(x).at(y) = trap;
-//}
+void Room::drawTrap(int x, int y, char trap) {
+    m_originalRoom.at(x).at(y) = new Tile(trap);
+    m_room.at(x).at(y) = new Tile(trap);
+}
 
 //void Room::drawMonster(int x, int y, char sign) {
 //    m_originalRoom.at(x).at(y) = sign;

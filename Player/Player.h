@@ -41,6 +41,17 @@ protected:
 
     virtual void attack(Room* room, char input) = 0;
 
+    void printInfo();
+
+
+    int getHealth();
+    int getDefense();
+    int getStrength();
+    int getPositionX();
+    int getPositionY();
+    void setHealth(int health);
+    void setDefense(int defense);
+    void setStrength(int strength);
 };
 
 

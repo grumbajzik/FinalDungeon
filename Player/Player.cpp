@@ -59,6 +59,49 @@ void Player::move(Room* room, char input) {
     room->updatePlayerPosition(playerPosition.x,playerPosition.y, true);
 }
 
+void Player::printInfo() {
+    std::cout << "X: " << playerPosition.x << " " << "Y: " << playerPosition.y << std::endl;
+    std::cout << "healt: " << m_health << std::endl;
+    std::cout << "defence: " << m_defense << std::endl;
+    std::cout << "strength: " << m_strength << std::endl;
+}
+
+
+
+
+
+
+
+
+//getry
+int Player::getHealth() {
+    return m_health;
+}
+int Player::getDefense() {
+    return m_defense;
+}
+int Player::getStrength() {
+    return m_strength;
+}
+int Player::getPositionX() {
+    return playerPosition.x;
+}
+int Player::getPositionY() {
+    return playerPosition.y;
+}
+//setry
+void Player::setHealth(int health) {
+    m_health = health;
+}
+void Player::setDefense(int defense) {
+    m_defense = defense;
+}
+void Player::setStrength(int strength) {
+    m_strength = strength;
+}
+
+
+
 
 
 

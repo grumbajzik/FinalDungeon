@@ -20,13 +20,13 @@ class Game {
     static MonsterFactory* m_monsterFactory;
     static std::vector<ArtilleryMonster*> m_artilleryMonsters;
     static std::vector<CloseCombatEnemy*> m_closeCombatEnemies;
-    static void setPlayer(Player* player);
 public:
     static PlayerType m_playerType;
     static TypeOfFactory m_typeOfFactory;
 
     static void Run(int index);
     static void startGame();
+
 };
 
 
