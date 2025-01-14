@@ -21,7 +21,7 @@ public:
     int getId();
     std::vector<std::vector<Tile*>> getRoom();
     void updatePlayerPosition(int x,int y, bool newPosition);
-    void drawPlayerAttack(int x,int y, bool isAttack);
+    void drawPlayerAttack(int x,int y, bool isAttack, bool isUp);
     void drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAttack);
     void drawTrap(int x, int y, char trap);
     void drawMonster(int x, int y, char sign);

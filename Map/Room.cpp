@@ -84,8 +84,7 @@ void Room::updatePlayerPosition(int x,int y, bool newPosition) {
     }
 }
 
-void Room::drawPlayerAttack(int x, int y, bool isAttack) {
-
+void Room::drawPlayerAttack(int x, int y, bool isAttack, bool isUp) {
     if (m_lastAttack.first != -1 && m_lastAttack.second != -1) {
         m_room.at(m_lastAttack.first).at(m_lastAttack.second) = m_attackPrevoiousTile;
     }
@@ -93,7 +92,11 @@ void Room::drawPlayerAttack(int x, int y, bool isAttack) {
     if (x < m_room.size()-1 && y < m_room[0].size()-1 && x > 0 && y > 0) {
         if (isAttack) {
             m_attackPrevoiousTile = m_room.at(x).at(y);
-            m_room.at(x).at(y) = new Tile('-');
+            if (isUp) {
+                m_room.at(x).at(y) = new Tile('|');
+            }else {
+                m_room.at(x).at(y) = new Tile('-');
+            }
             m_lastAttack = {x,y};
         }else {
             m_lastAttack = {-1,-1};

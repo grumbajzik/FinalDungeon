@@ -14,31 +14,31 @@ void Warrior::attack(Room *room, char input) {
     int arrow = static_cast<int>(input);
     weaponPosition.x = playerPosition.x;
     weaponPosition.y = playerPosition.y;
-    room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, false);
+    room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, false, false);
 
     switch (arrow) {
         case 72:
             //sipka nahoru
                 weaponPosition.x -= 1;
-            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true);
+            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true, true);
         break;
         case 80:
             //sipka dolu
                 weaponPosition.x += 1;
-            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true);
+            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true, true);
         break;
         case 75:
             //sipka doleva
                 weaponPosition.y -= 1;
-            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true);
+            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true, false);
         break;
         case 77:
             //sipka doprava
                 weaponPosition.y += 1;
-            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true);
+            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, true, false);
         break;
         default:
-            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, false);
+            room->drawPlayerAttack(weaponPosition.x,weaponPosition.y, false, false);
         break;
     }
 }
