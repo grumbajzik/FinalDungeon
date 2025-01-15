@@ -38,8 +38,8 @@ void Room::printRoom() {
     }
 }
 
-void Room::refreshRoom() {
-//    std::lock_guard<std::mutex> lock(m_consoleMutex); // Zamknutí přístupu
+void Room::refreshRoom(std::string info) {
+    std::lock_guard<std::mutex> lock(m_consoleMutex); // Zamknutí přístupu
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleCursorPosition(hConsole, {0, 0});
     for (auto &row: m_room) {
@@ -49,6 +49,9 @@ void Room::refreshRoom() {
             value += ' ';
         }
         std::cout << value << std::endl;
+    }
+    if(info != ""){
+        std::cout << info;
     }
 }
 
@@ -110,7 +113,7 @@ void Room::drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAt
             if (m_room.at(x).at(y)->getIcon() != '#') {
                 m_attackPrevoiousTile = m_originalRoom.at(x).at(y);
                 m_room.at(x).at(y) = new Tile('o');
-                refreshRoom();
+                refreshRoom("");
                 std::this_thread::sleep_for(std::chrono::milliseconds(70));
                 m_room.at(x).at(y) = m_attackPrevoiousTile;
                 switch (direction) {

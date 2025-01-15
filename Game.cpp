@@ -5,6 +5,7 @@
 #include "Game.h"
 
 #include <conio.h>
+#include <thread>
 
 #include "Options.h"
 #include "EnemyObject/Trap/StaticTrap.h"
@@ -16,6 +17,12 @@ std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
 std::vector<CloseCombatEnemy*> Game::m_closeCombatEnemies = {};
 TypeOfFactory Game::m_typeOfFactory = TypeOfFactory::WeakFactory;
 
+void backgroundRefresh(Room* room, Player* player) {
+    while (true) {
+        room->refreshRoom(player->printInfo());
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+}
 
 void Game::Run(int index) {
         switch (index) {
@@ -42,14 +49,14 @@ void Game::startGame() {
     StaticTrap* trap = StaticTrap::createTrap();
     trap->makeTrapInRoom(m_room);
     m_room->printRoom();
+    std::thread refreshThread(backgroundRefresh, m_room, player);
 
 
     while (true) {
         char input = getch();
         player->move(m_room,input);
         player->attack(m_room,input);
-        m_room->refreshRoom();
         trap->treatPlayer(player);
-        player->printInfo();
+
     }
 }

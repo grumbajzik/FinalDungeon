@@ -41,7 +41,7 @@ protected:
 
     virtual void attack(Room* room, char input) = 0;
 
-    void printInfo();
+    std::string printInfo();
 
 
     int getHealth();

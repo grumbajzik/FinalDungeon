@@ -17,7 +17,7 @@ class Room{
 public:
     Room();
     void printRoom();
-    void refreshRoom();
+    void refreshRoom(std::string info);
     int getId();
     std::vector<std::vector<Tile*>> getRoom();
     void updatePlayerPosition(int x,int y, bool newPosition);

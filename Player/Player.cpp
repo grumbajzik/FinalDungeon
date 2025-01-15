@@ -59,11 +59,11 @@ void Player::move(Room* room, char input) {
     room->updatePlayerPosition(playerPosition.x,playerPosition.y, true);
 }
 
-void Player::printInfo() {
-    std::cout << "X: " << playerPosition.x << " " << "Y: " << playerPosition.y << std::endl;
-    std::cout << "healt: " << m_health << std::endl;
-    std::cout << "defence: " << m_defense << std::endl;
-    std::cout << "strength: " << m_strength << std::endl;
+std::string Player::printInfo() {
+    return "X: " + std::to_string(playerPosition.x) + " Y: " + std::to_string(playerPosition.y) + "\n" +
+    "healt: " + std::to_string(m_health) + "\n" +
+    "defence: " + std::to_string(m_defense) + "\n"+
+    "strength: " + std::to_string(m_strength) +  "\n";
 }
 
 
