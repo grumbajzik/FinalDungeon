@@ -80,6 +80,7 @@ std::vector<std::vector<Tile*>> Room::getRoom() {
 
 void Room::updatePlayerPosition(int x,int y, bool newPosition) {
     if (newPosition) {
+
         m_playerPreviousMove = m_originalRoom.at(x).at(y);
         m_room.at(x).at(y) = m_playerSkinInRoom;
     } else {
@@ -89,7 +90,12 @@ void Room::updatePlayerPosition(int x,int y, bool newPosition) {
 
 void Room::drawPlayerAttack(int x, int y, bool isAttack, bool isUp) {
     if (m_lastAttack.first != -1 && m_lastAttack.second != -1) {
-        m_room.at(m_lastAttack.first).at(m_lastAttack.second) = m_attackPrevoiousTile;
+        if(m_room.at(m_lastAttack.first).at(m_lastAttack.second)->getIcon() == Options::getPlayerSkin()){
+            m_room.at(m_lastAttack.first).at(m_lastAttack.second) = m_playerSkinInRoom;
+        } else{
+            m_room.at(m_lastAttack.first).at(m_lastAttack.second) = m_attackPrevoiousTile;
+        }
+
     }
 
     if (x < m_room.size()-1 && y < m_room[0].size()-1 && x > 0 && y > 0) {
