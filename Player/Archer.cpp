@@ -17,11 +17,8 @@ Archer::Archer(int health, int defence, int strength) {
 void Archer::attack(Room* room, char input) {
     std::time_t now;
     time(&now);
-
-    // Kontrola, zda uběhl alespoň 1 sekunda od posledního útoku
     if (std::difftime(now, m_lastAttack) >= 1) {
 
-        int arrow = static_cast<int>(input);
         int direction = -1;
         bulletPosition.x = playerPosition.x;
         bulletPosition.y = playerPosition.y;
