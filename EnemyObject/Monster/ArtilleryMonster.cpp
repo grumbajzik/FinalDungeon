@@ -4,5 +4,43 @@
 
 #include "ArtilleryMonster.h"
 
+#include <thread>
+
 ArtilleryMonster::ArtilleryMonster() {
+    m_artillerySign = 'A';
+}
+
+void ArtilleryMonster::makeMonsterInRoom(Room *room) {
+    int roomSizeX = room->getSizeOfRoomX();
+    int roomSizeY = room->getSizeOfRoomY();
+    bool isSign = true;
+
+    artilleryPosition.x = std::rand() % roomSizeX;
+    artilleryPosition.y = std::rand() % roomSizeY;
+
+    while (isSign) {
+        if (room->getRoom().at(artilleryPosition.x).at(artilleryPosition.y)->getIcon() == ' ') {
+            isSign = false;
+        } else {
+            artilleryPosition.x = std::rand() % roomSizeX; // Náhodný řádek
+            artilleryPosition.y = std::rand() % roomSizeY; // Náhodný sloupec
+        }
+    }
+    room->drawArtilleryMonster(artilleryPosition.x,artilleryPosition.y,m_artillerySign);
+}
+
+void ArtilleryMonster::attack(Player *player, Room *room) {
+    int roomSizeX = room->getSizeOfRoomX();
+    int roomSizeY = room->getSizeOfRoomY();
+    int healthAfterDmg = player->getHealth()- m_strength;
+
+    attackingPosition.x = std::rand() % roomSizeX;
+    attackingPosition.y = std::rand() % roomSizeY;
+
+    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,true);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,false);
+    if(attackingPosition.x == player->getPositionX() && attackingPosition.y == player->getPositionY()) {
+        player->setHealth(healthAfterDmg);
+    }
 }

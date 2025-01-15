@@ -29,7 +29,6 @@ Player *Player::createPlayer(PlayerType playerType) {
 
 
 void Player::move(Room* room, char input) {
-    //    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     room->updatePlayerPosition(playerPosition.x,playerPosition.y, false);
 
     switch (input) {
@@ -65,12 +64,6 @@ std::string Player::printInfo() {
     "defence: " + std::to_string(m_defense) + "\n"+
     "strength: " + std::to_string(m_strength) +  "\n";
 }
-
-
-
-
-
-
 
 
 //getry

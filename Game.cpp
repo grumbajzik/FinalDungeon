@@ -46,8 +46,11 @@ void Game::startGame() {
     m_room = new Room();
     m_room->updatePlayerPosition(3,3,true);
     Player* player = Player::createPlayer(m_playerType);
+    ArtilleryMonster* arMonster = m_monsterFactory->createArtilleryMonster();
     StaticTrap* trap = StaticTrap::createTrap();
+
     trap->makeTrapInRoom(m_room);
+    arMonster->makeMonsterInRoom(m_room);
     m_room->printRoom();
     std::thread refreshThread(backgroundRefresh, m_room, player);
 
@@ -56,7 +59,7 @@ void Game::startGame() {
         char input = getch();
         player->move(m_room,input);
         player->attack(m_room,input);
+        arMonster->attack(player,m_room);
         trap->treatPlayer(player);
-
     }
 }

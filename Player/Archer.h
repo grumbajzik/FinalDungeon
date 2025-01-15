@@ -20,7 +20,6 @@ class Archer : public Player{
 
     void attack(Room* room, char input) override;
 
-
 };
 
 

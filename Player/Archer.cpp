@@ -23,7 +23,6 @@ void Archer::attack(Room* room, char input) {
         bulletPosition.x = playerPosition.x;
         bulletPosition.y = playerPosition.y;
 
-
         room->drawPlayerAttackOnRange(m_attackRange, bulletPosition.x, bulletPosition.y, direction, false);
 
         switch (input) {

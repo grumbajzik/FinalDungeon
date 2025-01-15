@@ -13,7 +13,6 @@ StaticTrap *StaticTrap::createTrap() {
     return new StaticTrap();
 }
 
-
 void StaticTrap::makeTrapInRoom(Room *room) {
     unsigned int sizeX = room->getSizeOfRoomX();
     unsigned int sizeY = room->getSizeOfRoomY();

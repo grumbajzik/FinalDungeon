@@ -163,20 +163,20 @@ void Room::drawTrap(int x, int y, char trap) {
     m_room.at(x).at(y) = new Tile(trap);
 }
 
-//void Room::drawMonster(int x, int y, char sign) {
-//    m_originalRoom.at(x).at(y) = sign;
-//    m_room.at(x).at(y) = sign;
-//}
+void Room::drawArtilleryMonster(int x, int y, char sign) {
+    m_originalRoom.at(x).at(y) = new Tile(sign);
+    m_room.at(x).at(y) = new Tile(sign);
+}
 
-//void Room::drawArtilleryAttack(int x, int y, bool warning) {
-//    if (warning) {
-//        m_originalRoom.at(x).at(y) = 'X';
-//        m_room.at(x).at(y) = 'X';
-//    }else {
-//        m_originalRoom.at(x).at(y) = '@';
-//        m_room.at(x).at(y) = '@';
-//    }
-//}
+void Room::drawArtilleryAttack(int x, int y, bool warning) {
+    if (warning) {
+        m_originalRoom.at(x).at(y) = new Tile('X');
+        m_room.at(x).at(y) = new Tile('X');
+    }else {
+        m_originalRoom.at(x).at(y) = new Tile('H');
+        m_room.at(x).at(y) = new Tile('H');
+    }
+}
 
 
 
