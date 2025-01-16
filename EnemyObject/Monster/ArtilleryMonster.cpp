@@ -26,20 +26,20 @@ void ArtilleryMonster::makeMonsterInRoom(Room *room) {
             artilleryPosition.y = std::rand() % roomSizeY; // Náhodný sloupec
         }
     }
-    room->drawArtilleryMonster(artilleryPosition.x,artilleryPosition.y,m_artillerySign);
+    room->drawMonster(artilleryPosition.x,artilleryPosition.y,m_artillerySign);
 }
 
 void ArtilleryMonster::attack(Player *player, Room *room) {
-    int roomSizeX = room->getSizeOfRoomX();
-    int roomSizeY = room->getSizeOfRoomY();
+    int roomSizeX = room->getSizeOfRoomX()-1;
+    int roomSizeY = room->getSizeOfRoomY()-1;
     int healthAfterDmg = player->getHealth()- m_strength;
 
     attackingPosition.x = std::rand() % roomSizeX;
     attackingPosition.y = std::rand() % roomSizeY;
 
     room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,true);
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,false);
+    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    //room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,false);
     if(attackingPosition.x == player->getPositionX() && attackingPosition.y == player->getPositionY()) {
         player->setHealth(healthAfterDmg);
     }

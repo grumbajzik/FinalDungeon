@@ -80,7 +80,6 @@ std::vector<std::vector<Tile*>> Room::getRoom() {
 
 void Room::updatePlayerPosition(int x,int y, bool newPosition) {
     if (newPosition) {
-
         m_playerPreviousMove = m_originalRoom.at(x).at(y);
         m_room.at(x).at(y) = m_playerSkinInRoom;
     } else {
@@ -139,7 +138,6 @@ void Room::drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAt
                         break;
                 }
             }else{
-
                 m_room.at(x).at(y) = m_originalRoom.at(x).at(y);
             }
         }
@@ -163,10 +161,23 @@ void Room::drawTrap(int x, int y, char trap) {
     m_room.at(x).at(y) = new Tile(trap);
 }
 
-void Room::drawArtilleryMonster(int x, int y, char sign) {
+void Room::drawMonster(int x, int y, char sign) {
     m_originalRoom.at(x).at(y) = new Tile(sign);
     m_room.at(x).at(y) = new Tile(sign);
+    m_monsterPreviousMove = new Tile(' ');
 }
+
+void Room::updateMonsterPosition(int newX, int newY, int lastX, int lastY,char monsterChar) {
+    if (m_monsterPreviousMove == m_playerSkinInRoom) {
+        m_monsterPreviousMove = m_originalRoom.at(newY).at(newX);
+        m_room.at(lastX).at(lastY) = m_monsterPreviousMove;
+    }else {
+        m_room.at(lastX).at(lastY) = m_monsterPreviousMove;
+        m_monsterPreviousMove = m_room.at(newX).at(newY);
+    }
+    m_room.at(newX).at(newY) = new Tile(monsterChar);
+}
+
 
 void Room::drawArtilleryAttack(int x, int y, bool warning) {
     if (warning) {
@@ -178,11 +189,4 @@ void Room::drawArtilleryAttack(int x, int y, bool warning) {
     }
 }
 
-
-
-
-int Room::s_id = 0;//
-// Created by Admin on 04.01.2025.
-//
-
-#include "Room.h"
+int Room::s_id = 0;
