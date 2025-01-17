@@ -7,13 +7,14 @@
 #include <iostream>
 #include "../../Player/Player.h"
 #include "../../Map/Room.h"
+#include "../../Player/Archer.h"
+#include "../../Player/Warrior.h"
+#include "../../Game.h"
 
 struct CloseClombatEnemyPosition {
     int x;
     int y;
 };
-
-
 
 class CloseCombatEnemy {
 
@@ -34,7 +35,9 @@ class CloseCombatEnemy {
 
     void attack(Player* player,Room* room);
 
+    void defend(Player* player);
 
+    void monsterDied();
 };
 
 

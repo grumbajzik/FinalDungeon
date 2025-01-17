@@ -14,11 +14,15 @@ class Archer : public Player{
     Position bulletPosition;
     int m_attackRange;
     std::time_t m_lastAttack;
+
     public:
 
     Archer(int health, int defence, int strength);
 
     void attack(Room* room, char input) override;
+
+    int getBulletPositionX();
+    int getBulletPositionY();
 
 };
 

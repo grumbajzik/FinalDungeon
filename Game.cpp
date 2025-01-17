@@ -63,6 +63,7 @@ void Game::startGame() {
         player->move(m_room,input);
         player->attack(m_room,input);
 //        arMonster->attack(player,m_room);
+        arMonster->defend(player);
         clMonster->attack(player,m_room);
         trap->treatPlayer(player);
     }

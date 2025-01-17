@@ -88,3 +88,9 @@ void Archer::attack(Room* room, char input) {
     }
 }
 
+int Archer::getBulletPositionX() {
+    return bulletPosition.x;
+}
+int Archer::getBulletPositionY() {
+    return bulletPosition.y;
+}

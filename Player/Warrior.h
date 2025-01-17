@@ -17,6 +17,10 @@ class Warrior : public Player{
 
     void attack(Room* room, char input) override;
 
+    int getWeaponPositionX();
+    int getWeaponPositionY();
+
+
 };
 
 

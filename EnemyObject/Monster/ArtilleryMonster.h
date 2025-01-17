@@ -7,6 +7,8 @@
 #include <iostream>
 #include "../../Map/Room.h"
 #include "../../Player/Player.h"
+#include "../../Player/Archer.h"
+#include "../../Player/Warrior.h"
 
 struct ArtilleryPosition {
     int x;
@@ -35,6 +37,8 @@ protected:
     void attack(Player* player,Room* room);
 
     void defend(Player* player);
+
+    void monsterDied();
 };
 
 

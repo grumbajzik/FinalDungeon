@@ -43,4 +43,10 @@ void Warrior::attack(Room *room, char input) {
     }
 }
 
+int Warrior::getWeaponPositionX() {
+    return weaponPosition.x;
+}
+int Warrior::getWeaponPositionY() {
+    return weaponPosition.y;
+}
 
