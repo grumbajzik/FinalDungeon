@@ -60,7 +60,7 @@ void Player::move(Room* room, char input) {
 
 std::string Player::printInfo() {
     return "X: " + std::to_string(playerPosition.x) + " Y: " + std::to_string(playerPosition.y) + "\n" +
-    "healt: " + std::to_string(m_health) + "\n" +
+    "health: " + std::to_string(m_health) + "\n" +
     "defence: " + std::to_string(m_defense) + "\n"+
     "strength: " + std::to_string(m_strength) +  "\n";
 }

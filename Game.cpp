@@ -62,7 +62,7 @@ void Game::startGame() {
         char input = getch();
         player->move(m_room,input);
         player->attack(m_room,input);
-        arMonster->attack(player,m_room);
+//        arMonster->attack(player,m_room);
         clMonster->attack(player,m_room);
         trap->treatPlayer(player);
     }

@@ -32,6 +32,12 @@ void CloseCombatEnemy::attack(Player *player, Room *room) {
     int lastX = closeCombatPosition.x;
     int lastY = closeCombatPosition.y;
 
+    m_previousTile = room->getRoom().at(closeCombatPosition.x).at(closeCombatPosition.y)->getIcon();
+
+    if (m_previousTile == 'C') {
+        m_previousTile = ' ';
+    }
+
     if(closeCombatPosition.x != player->getPositionX()) {
         if (closeCombatPosition.x > player->getPositionX()) {
             closeCombatPosition.x--;
@@ -47,7 +53,7 @@ void CloseCombatEnemy::attack(Player *player, Room *room) {
         }
     }
 
-    room->updateMonsterPosition(closeCombatPosition.x, closeCombatPosition.y,lastX,lastY, m_symbol);
+    room->updateMonsterPosition(closeCombatPosition.x, closeCombatPosition.y,lastX,lastY, m_symbol,m_previousTile);
     if(player->getPositionX() == closeCombatPosition.x && player->getPositionY() == closeCombatPosition.y) {
         player->setHealth(healtAfterDamage);
     }

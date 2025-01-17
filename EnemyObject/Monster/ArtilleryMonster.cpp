@@ -37,10 +37,17 @@ void ArtilleryMonster::attack(Player *player, Room *room) {
     attackingPosition.x = std::rand() % roomSizeX;
     attackingPosition.y = std::rand() % roomSizeY;
 
-    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,true);
-    //std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    //room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,false);
+    m_artilleryAttackTile = room->getRoom().at(attackingPosition.x).at(attackingPosition.y)->getIcon();
+
+    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,1, m_artilleryAttackTile);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,2,m_artilleryAttackTile);
+
     if(attackingPosition.x == player->getPositionX() && attackingPosition.y == player->getPositionY()) {
         player->setHealth(healthAfterDmg);
     }
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,3,m_artilleryAttackTile);
 }
+

@@ -24,6 +24,7 @@ class CloseCombatEnemy {
     int m_defense;
     char m_symbol;
     CloseClombatEnemyPosition closeCombatPosition;
+    char m_previousTile;
 
     public:
 

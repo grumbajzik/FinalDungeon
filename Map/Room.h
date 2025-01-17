@@ -21,12 +21,12 @@ public:
     int getId();
     std::vector<std::vector<Tile*>> getRoom();
     void updatePlayerPosition(int x,int y, bool newPosition);
-    void updateMonsterPosition(int newX,int newY,int lastX,int lastY, char monsterChar);
+    void updateMonsterPosition(int newX,int newY,int lastX,int lastY, char monsterChar, char previousTile);
     void drawPlayerAttack(int x,int y, bool isAttack, bool isUp);
     void drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAttack);
     void drawTrap(int x, int y, char trap);
     void drawMonster(int x, int y, char sign);
-    void drawArtilleryAttack(int x, int y, bool warning);
+    void drawArtilleryAttack(int x, int y, int stateOfAttack,char previousTile);
 
     int getSizeOfRoomX();
     int getSizeOfRoomY();
@@ -40,7 +40,6 @@ private:
     int m_id ;
     std::pair<int,int> m_lastAttack; //na uchovani posledniho utoku na blizko
     Tile* m_playerPreviousMove;
-    Tile* m_monsterPreviousMove;
     Tile* m_attackPrevoiousTile = nullptr;
     std::vector<std::vector<Tile*>> generateRoom();
     void clearRoom();

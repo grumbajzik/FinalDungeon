@@ -24,6 +24,7 @@ protected:
     char m_artillerySign;
     ArtilleryPosition artilleryPosition;
     ArtilleryPosition attackingPosition;
+    char m_artilleryAttackTile;
 
     public:
 
@@ -33,6 +34,7 @@ protected:
 
     void attack(Player* player,Room* room);
 
+    void defend(Player* player);
 };
 
 

@@ -164,28 +164,30 @@ void Room::drawTrap(int x, int y, char trap) {
 void Room::drawMonster(int x, int y, char sign) {
     m_originalRoom.at(x).at(y) = new Tile(sign);
     m_room.at(x).at(y) = new Tile(sign);
-    m_monsterPreviousMove = new Tile(' ');
 }
 
-void Room::updateMonsterPosition(int newX, int newY, int lastX, int lastY,char monsterChar) {
-    if (m_monsterPreviousMove == m_playerSkinInRoom) {
-        m_monsterPreviousMove = m_originalRoom.at(newY).at(newX);
-        m_room.at(lastX).at(lastY) = m_monsterPreviousMove;
+void Room::updateMonsterPosition(int newX, int newY, int lastX, int lastY,char monsterChar, char previousTile) {
+    if (m_room.at(lastX).at(lastY) == m_playerSkinInRoom) {
+        m_room.at(lastX).at(lastY) = m_playerPreviousMove;
     }else {
-        m_room.at(lastX).at(lastY) = m_monsterPreviousMove;
-        m_monsterPreviousMove = m_room.at(newX).at(newY);
+        m_room.at(lastX).at(lastY) = new Tile(previousTile);
     }
     m_room.at(newX).at(newY) = new Tile(monsterChar);
 }
 
 
-void Room::drawArtilleryAttack(int x, int y, bool warning) {
-    if (warning) {
-        m_originalRoom.at(x).at(y) = new Tile('X');
-        m_room.at(x).at(y) = new Tile('X');
-    }else {
-        m_originalRoom.at(x).at(y) = new Tile('H');
-        m_room.at(x).at(y) = new Tile('H');
+void Room::drawArtilleryAttack(int x, int y, int stateOfAttack, char previousTile) {
+
+    switch(stateOfAttack) {
+        case 1:
+            m_room.at(x).at(y) = new Tile('X');
+            break;
+        case 2:
+            m_room.at(x).at(y) = new Tile('H');
+            break;
+        case 3:
+            m_room.at(x).at(y) = new Tile(previousTile);
+            break;
     }
 }
 
