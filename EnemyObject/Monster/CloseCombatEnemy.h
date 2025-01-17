@@ -9,7 +9,8 @@
 #include "../../Map/Room.h"
 #include "../../Player/Archer.h"
 #include "../../Player/Warrior.h"
-#include "../../Game.h"
+#include "../../Options.h"
+#include "../../Enums/PlayerType.h"
 
 struct CloseClombatEnemyPosition {
     int x;

@@ -72,8 +72,8 @@ void DifficultyOfGameButton::selectDifficulty(char input) {
 
 void DifficultyOfGameButton::getTypeOfFactory() {
     if (m_index == 0) {
-        Game::m_typeOfFactory = TypeOfFactory::WeakFactory;
+        Options::setFactoryType(FactoryType::WeakFactory);
     }else {
-        Game::m_typeOfFactory = TypeOfFactory::StrongFactory;
+        Options::setFactoryType(FactoryType::StrongFactory);
     }
 }

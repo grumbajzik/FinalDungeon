@@ -6,6 +6,7 @@
 #define STARTGAMEBUTTON_H
 #include "Button.h"
 #include <vector>
+#include "../Options.h"
 
 #include "../Player/Player.h"
 

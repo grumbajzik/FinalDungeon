@@ -5,6 +5,7 @@
 #include "StartGameButton.h"
 
 #include <conio.h>
+#include <windns.h>
 
 #include "../Game.h"
 
@@ -66,7 +67,7 @@ void StartGameButton::runStartGameMenu() {
         input = getch();
         selectTypeOfPlayer(input);
     }
-    Game::m_playerType = getTypeOfPlayer();
+    Options::setPlayerType(getTypeOfPlayer());
     system("cls");
     Game::Run(2);
 }

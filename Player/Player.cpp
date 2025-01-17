@@ -14,10 +14,10 @@ Player::Player() {
 
 Player *Player::createPlayer(PlayerType playerType) {
     switch (playerType) {
-        case ArcherType:
+        case PlayerType::ArcherType:
             return new Archer(50,50,50);
             break;
-        case WarriorType:
+        case PlayerType::WarriorType:
             return new Warrior(50,50,50);
             break;
         default:

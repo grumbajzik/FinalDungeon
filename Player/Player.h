@@ -7,14 +7,12 @@
 #include <iostream>
 #include "../Map/Tile.h"
 #include "../Map/Room.h"
+#include "../Enums/PlayerType.h"
 
 
 class Room;
 
-enum PlayerType {
-    ArcherType,
-    WarriorType
-};
+
 
 struct Position {
     int x;

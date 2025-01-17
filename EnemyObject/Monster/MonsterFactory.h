@@ -6,18 +6,14 @@
 #define MONSTERFACTORY_H
 #include "ArtilleryMonster.h"
 #include "CloseCombatEnemy.h"
-
-enum TypeOfFactory {
-    WeakFactory,
-    StrongFactory
-};
+#include "../../Enums/FactoryType.h"
 
 
 class MonsterFactory {
 
     public:
 
-    static MonsterFactory* getFactory(TypeOfFactory typeOfFactory);
+    static MonsterFactory* getFactory(FactoryType typeOfFactory);
 
     virtual ArtilleryMonster* createArtilleryMonster() = 0;
 

@@ -6,7 +6,6 @@
 
 #include <thread>
 
-#include "../../Game.h"
 
 ArtilleryMonster::ArtilleryMonster() {
     m_artillerySign = 'A';
@@ -54,8 +53,8 @@ void ArtilleryMonster::attack(Player *player, Room *room) {
 }
 
 void ArtilleryMonster::defend(Player *player) {
-    switch (Game::m_playerType) {
-        case ArcherType:
+    switch (Options::getPlayerType()) {
+        case PlayerType::ArcherType:
             if (dynamic_cast<Archer*>(player)->getBulletPositionX() == artilleryPosition.x && dynamic_cast<Archer*>(player)->getBulletPositionY() == artilleryPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {
@@ -63,7 +62,7 @@ void ArtilleryMonster::defend(Player *player) {
                 }
             }
             break;
-        case WarriorType:
+        case PlayerType::WarriorType:
             if(dynamic_cast<Warrior*>(player)->getWeaponPositionX() == artilleryPosition.x && dynamic_cast<Warrior*>(player)->getWeaponPositionY() == artilleryPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {

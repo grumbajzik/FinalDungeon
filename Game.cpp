@@ -15,7 +15,7 @@ MonsterFactory* Game::m_monsterFactory = nullptr;
 PlayerType Game::m_playerType;
 std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
 std::vector<CloseCombatEnemy*> Game::m_closeCombatEnemies = {};
-TypeOfFactory Game::m_typeOfFactory = TypeOfFactory::WeakFactory;
+
 
 void backgroundRefresh(Room* room, Player* player) {
     while (true) {
@@ -35,7 +35,7 @@ void Game::Run(int index) {
                 //Tady to bude volat metodu na vytvoření Options Menu
                 break;
             case 2:
-                m_monsterFactory = m_monsterFactory->getFactory(m_typeOfFactory);
+                m_monsterFactory = m_monsterFactory->getFactory(Options::getFactoryType());
                 startGame();
                 break;
         }
@@ -58,13 +58,13 @@ void Game::startGame() {
     std::thread refreshThread(backgroundRefresh, m_room, player);
 
 
-    while (true) {
+    while (player->getHealth()>0) {
         char input = getch();
         player->move(m_room,input);
         player->attack(m_room,input);
-//        arMonster->attack(player,m_room);
+        arMonster->attack(player,m_room);
         arMonster->defend(player);
-        clMonster->attack(player,m_room);
+//        clMonster->attack(player,m_room);
         trap->treatPlayer(player);
     }
 }

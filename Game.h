@@ -22,7 +22,7 @@ class Game {
     static std::vector<CloseCombatEnemy*> m_closeCombatEnemies;
 public:
     static PlayerType m_playerType;
-    static TypeOfFactory m_typeOfFactory;
+    static FactoryType m_typeOfFactory;
 
     static void Run(int index);
     static void startGame();

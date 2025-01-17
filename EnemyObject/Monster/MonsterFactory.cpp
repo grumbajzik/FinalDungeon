@@ -7,11 +7,13 @@
 #include "StrongMonsterFactory.h"
 #include "WeakMonsterFactory.h"
 
-MonsterFactory *MonsterFactory::getFactory(TypeOfFactory typeOfFactory) {
+MonsterFactory *MonsterFactory::getFactory(FactoryType typeOfFactory) {
     switch (typeOfFactory) {
-        case TypeOfFactory::WeakFactory:
+        case FactoryType::WeakFactory:
             return new WeakMonsterFactory();
-        case TypeOfFactory::StrongFactory:
+        case FactoryType::StrongFactory:
             return new StrongMonsterFactory();
+        default:
+            return nullptr;
     }
 }
