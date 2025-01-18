@@ -9,9 +9,11 @@
 
 ArtilleryMonster::ArtilleryMonster() {
     m_artillerySign = 'A';
+    std::time(&m_lastAttack);
 }
 
 void ArtilleryMonster::makeMonsterInRoom(Room *room) {
+    m_room = room;
     int roomSizeX = room->getSizeOfRoomX();
     int roomSizeY = room->getSizeOfRoomY();
     bool isSign = true;
@@ -31,25 +33,37 @@ void ArtilleryMonster::makeMonsterInRoom(Room *room) {
 }
 
 void ArtilleryMonster::attack(Player *player, Room *room) {
-    int roomSizeX = room->getSizeOfRoomX()-1;
-    int roomSizeY = room->getSizeOfRoomY()-1;
-    int healthAfterDmg = player->getHealth()- m_strength;
+    std::time_t now;
+    time(&now);
+    if(std::difftime(now, m_lastAttack) > 1) {
+        int roomSizeX = room->getSizeOfRoomX() - 2;
+        int roomSizeY = room->getSizeOfRoomY() - 2;
+        int healthAfterDmg = player->getHealth() - m_strength;
 
-    attackingPosition.x = std::rand() % roomSizeX;
-    attackingPosition.y = std::rand() % roomSizeY;
+        attackingPosition.x = std::rand() % roomSizeX+1;
+        attackingPosition.y = std::rand() % roomSizeY+1;
+        m_artilleryAttackTile = room->getRoom().at(attackingPosition.x).at(attackingPosition.y)->getIcon();
+        m_lastAttack = now;
+        std::thread artilleryThread(&ArtilleryMonster::threadAttack, this, player, room,healthAfterDmg);
+        artilleryThread.detach();
+    }
+}
 
-    m_artilleryAttackTile = room->getRoom().at(attackingPosition.x).at(attackingPosition.y)->getIcon();
 
-    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,1, m_artilleryAttackTile);
+
+void ArtilleryMonster::threadAttack(Player *player, Room *room, int healthAfterDmg) {
+
+
+    room->drawArtilleryAttack(attackingPosition.x, attackingPosition.y, 1, m_artilleryAttackTile);
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,2,m_artilleryAttackTile);
+    room->drawArtilleryAttack(attackingPosition.x, attackingPosition.y, 2, m_artilleryAttackTile);
 
     if(attackingPosition.x == player->getPositionX() && attackingPosition.y == player->getPositionY()) {
         player->setHealth(healthAfterDmg);
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    room->drawArtilleryAttack(attackingPosition.x,attackingPosition.y,3,m_artilleryAttackTile);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    room->drawArtilleryAttack(attackingPosition.x, attackingPosition.y, 3, m_artilleryAttackTile);
 }
 
 void ArtilleryMonster::defend(Player *player) {
@@ -74,8 +88,10 @@ void ArtilleryMonster::defend(Player *player) {
 }
 
 void ArtilleryMonster::monsterDied() {
-    m_artillerySign = ' ';
-    std::cout << "Arttilery died" << std::endl;
+    m_room->getRoom();
+    delete this;
+
+//    std::cout << "Arttilery died" << std::endl;
 }
 
 

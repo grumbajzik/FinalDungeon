@@ -25,10 +25,12 @@ protected:
     int m_health;
     int m_strength;
     int m_defense;
+    Room* m_room;
     char m_artillerySign;
     ArtilleryPosition artilleryPosition;
     ArtilleryPosition attackingPosition;
     char m_artilleryAttackTile;
+    std::time_t m_lastAttack;
 
     public:
 
@@ -41,6 +43,8 @@ protected:
     void defend(Player* player);
 
     void monsterDied();
+
+    void threadAttack(Player *player, Room *room, int healthAfterDmg);
 };
 
 

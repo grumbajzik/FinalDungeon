@@ -186,7 +186,7 @@ void Room::drawArtilleryAttack(int x, int y, int stateOfAttack, char previousTil
             m_room.at(x).at(y) = new Tile('H');
             break;
         case 3:
-            m_room.at(x).at(y) = new Tile(previousTile);
+            m_room.at(x).at(y) = m_originalRoom.at(x).at(y);
             break;
     }
 }

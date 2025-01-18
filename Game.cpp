@@ -56,15 +56,21 @@ void Game::startGame() {
 
     m_room->printRoom();
     std::thread refreshThread(backgroundRefresh, m_room, player);
-
+    std::thread inputThread(playerInput, player);
 
     while (player->getHealth()>0) {
-        char input = getch();
-        player->move(m_room,input);
-        player->attack(m_room,input);
+
         arMonster->attack(player,m_room);
         arMonster->defend(player);
 //        clMonster->attack(player,m_room);
         trap->treatPlayer(player);
+    }
+}
+
+void Game::playerInput(Player *player) {
+    while (player->getHealth()>0) {
+        char input = getch();
+        player->move(m_room, input);
+        player->attack(m_room, input);
     }
 }

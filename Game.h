@@ -27,6 +27,7 @@ public:
     static void Run(int index);
     static void startGame();
 
+    static void playerInput(Player *player);
 };
 
 
