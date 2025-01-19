@@ -64,7 +64,6 @@ void Game::startGame() {
 //        arMonster->defend(player);
         std::thread closeCombatThread(&CloseCombatEnemy::attack, clMonster, std::ref(player), std::ref(m_room));
         closeCombatThread.detach();
-        clMonster->attack(player,m_room);
         trap->treatPlayer(player);
     }
 }
