@@ -162,15 +162,17 @@ void Room::drawTrap(int x, int y, char trap) {
 }
 
 void Room::drawMonster(int x, int y, char sign) {
-    m_originalRoom.at(x).at(y) = new Tile(sign);
+    if(sign == 'A'){
+        m_originalRoom.at(x).at(y) = new Tile(sign);
+    }
     m_room.at(x).at(y) = new Tile(sign);
 }
 
-void Room::updateMonsterPosition(int newX, int newY, int lastX, int lastY,char monsterChar, char previousTile) {
+void Room::updateMonsterPosition(int newX, int newY, int lastX, int lastY,char monsterChar, Tile* previousTile) {
     if (m_room.at(lastX).at(lastY) == m_playerSkinInRoom) {
         m_room.at(lastX).at(lastY) = m_playerPreviousMove;
     }else {
-        m_room.at(lastX).at(lastY) = new Tile(previousTile);
+        m_room.at(lastX).at(lastY) = previousTile;
     }
     m_room.at(newX).at(newY) = new Tile(monsterChar);
 }
@@ -192,3 +194,7 @@ void Room::drawArtilleryAttack(int x, int y, int stateOfAttack, char previousTil
 }
 
 int Room::s_id = 0;
+
+std::vector<std::vector<Tile *>> Room::getOriginalRoom() {
+    return m_originalRoom;
+}

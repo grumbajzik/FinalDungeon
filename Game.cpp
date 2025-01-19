@@ -58,11 +58,13 @@ void Game::startGame() {
     std::thread refreshThread(backgroundRefresh, m_room, player);
     std::thread inputThread(playerInput, player);
 
-    while (player->getHealth()>0) {
+    while (true/*player->getHealth()>0*/) {
 
         arMonster->attack(player,m_room);
-        arMonster->defend(player);
-//        clMonster->attack(player,m_room);
+//        arMonster->defend(player);
+        std::thread closeCombatThread(&CloseCombatEnemy::attack, clMonster, std::ref(player), std::ref(m_room));
+        closeCombatThread.detach();
+        clMonster->attack(player,m_room);
         trap->treatPlayer(player);
     }
 }

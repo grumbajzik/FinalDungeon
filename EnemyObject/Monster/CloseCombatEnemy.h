@@ -26,7 +26,8 @@ class CloseCombatEnemy {
     int m_defense;
     char m_symbol;
     CloseClombatEnemyPosition closeCombatPosition;
-    char m_previousTile;
+    Tile* m_previousTile;
+    std::time_t m_lastAttack;
 
     public:
 

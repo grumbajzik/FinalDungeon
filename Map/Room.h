@@ -20,8 +20,9 @@ public:
     void refreshRoom(std::string info);
     int getId();
     std::vector<std::vector<Tile*>> getRoom();
+    std::vector<std::vector<Tile*>> getOriginalRoom();
     void updatePlayerPosition(int x,int y, bool newPosition);
-    void updateMonsterPosition(int newX,int newY,int lastX,int lastY, char monsterChar, char previousTile);
+    void updateMonsterPosition(int newX,int newY,int lastX,int lastY, char monsterChar, Tile* previousTile);
     void drawPlayerAttack(int x,int y, bool isAttack, bool isUp);
     void drawPlayerAttackOnRange(int range,int x,int y,int direction,bool isAttack);
     void drawTrap(int x, int y, char trap);
