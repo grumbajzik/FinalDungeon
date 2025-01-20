@@ -211,7 +211,7 @@ void Room::setActive(bool activation) {
 
 void Room::drawDoor() {
     switch (m_id) {
-        case 1 :{
+        case 1 :{//levý dolní roh
             int index = round(m_room.at(0).size()/2);
             delete m_room.at(0).at(index);
             m_originalRoom.at(0).at(index) = new Tile('D');
@@ -222,13 +222,13 @@ void Room::drawDoor() {
             m_room.at(index).at(m_room.at(0).size()-1) = new Tile('D');
             break;
         }
-        case 2 :{
+        case 2 :{//pravý dolní roh
             break;
         }
-        case 3 :{
+        case 3 :{//levý horní roh
             break;
         }
-        case 4 :{
+        case 4 :{//pravý horní roh
             break;
         }
 
