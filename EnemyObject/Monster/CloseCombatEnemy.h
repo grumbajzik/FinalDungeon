@@ -40,6 +40,8 @@ class CloseCombatEnemy {
     void defend(Player* player);
 
     void monsterDied();
+
+    void ThreadAttack(Player *player, Room *room);
 };
 
 

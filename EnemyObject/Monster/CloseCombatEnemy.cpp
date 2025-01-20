@@ -32,38 +32,42 @@ void CloseCombatEnemy::attack(Player *player, Room *room) {
     std::time_t now;
     time(&now);
     if(std::difftime(now, m_lastAttack) > 1) {
-        m_lastAttack= now;
-        std::this_thread::sleep_for(std::chrono::milliseconds(750));
-        int healtAfterDamage = player->getHealth() - m_strength;
-        int lastX = closeCombatPosition.x;
-        int lastY = closeCombatPosition.y;
-        m_previousTile = room->getRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
+        m_lastAttack = now;
+        std::thread clAttackThread (&CloseCombatEnemy::ThreadAttack, this, std::ref(player), std::ref(room));
+        clAttackThread.detach();
+    }
+}
 
-        if (m_previousTile->getIcon() == 'C') {
-            m_previousTile = room->getOriginalRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
-        }
+void CloseCombatEnemy::ThreadAttack(Player *player, Room *room) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(750));
+    int healtAfterDamage = player->getHealth() - m_strength;
+    int lastX = closeCombatPosition.x;
+    int lastY = closeCombatPosition.y;
+    m_previousTile = room->getRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
 
-        if (closeCombatPosition.x != player->getPositionX()) {
-            if (closeCombatPosition.x > player->getPositionX()) {
-                closeCombatPosition.x--;
-            } else {
-                closeCombatPosition.x++;
-            }
-        }
-        if (closeCombatPosition.y != player->getPositionY()) {
-            if (closeCombatPosition.y > player->getPositionY()) {
-                closeCombatPosition.y--;
-            } else {
-                closeCombatPosition.y++;
-            }
-        }
+    if (m_previousTile->getIcon() == 'C') {
+        m_previousTile = room->getOriginalRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
+    }
 
-        room->updateMonsterPosition(closeCombatPosition.x, closeCombatPosition.y, lastX, lastY, m_symbol,
-                                    m_previousTile);
-        if (player->getPositionX() == closeCombatPosition.x && player->getPositionY() == closeCombatPosition.y) {
-            player->setHealth(healtAfterDamage);
+    if (closeCombatPosition.x != player->getPositionX()) {
+        if (closeCombatPosition.x > player->getPositionX()) {
+            closeCombatPosition.x--;
+        } else {
+            closeCombatPosition.x++;
         }
+    }
+    if (closeCombatPosition.y != player->getPositionY()) {
+        if (closeCombatPosition.y > player->getPositionY()) {
+            closeCombatPosition.y--;
+        } else {
+            closeCombatPosition.y++;
+        }
+    }
 
+    room->updateMonsterPosition(closeCombatPosition.x, closeCombatPosition.y, lastX, lastY, m_symbol,
+                                m_previousTile);
+    if (player->getPositionX() == closeCombatPosition.x && player->getPositionY() == closeCombatPosition.y) {
+        player->setHealth(healtAfterDamage);
     }
 }
 
