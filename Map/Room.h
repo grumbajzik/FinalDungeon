@@ -28,7 +28,8 @@ public:
     void drawTrap(int x, int y, char trap);
     void drawMonster(int x, int y, char sign);
     void drawArtilleryAttack(int x, int y, int stateOfAttack,char previousTile);
-
+    bool isActive();
+    void setActive(bool activation);
     int getSizeOfRoomX();
     int getSizeOfRoomY();
 
@@ -39,11 +40,15 @@ private:
     Tile* m_playerSkinInRoom;
     static int s_id;
     int m_id ;
-    std::pair<int,int> m_lastAttack; //na uchovani posledniho utoku na blizko
+    std::pair<int,int> m_lastAttack;
     Tile* m_playerPreviousMove;
     Tile* m_attackPrevoiousTile = nullptr;
+    bool active = false;
     std::vector<std::vector<Tile*>> generateRoom();
     void clearRoom();
+    void drawDoor();
 };
+
+
 
 #endif

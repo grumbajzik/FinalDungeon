@@ -10,11 +10,12 @@
 #include <chrono>
 #include <conio.h>
 #include <thread>
+#include <cmath>
 
 #include "../Options.h"
 #include "../Player/Player.h"
 
-
+int Room::s_id = 1;
 
 Room::Room() {
     m_room = generateRoom();
@@ -22,6 +23,7 @@ Room::Room() {
     m_id = s_id++;
     m_lastAttack = {-1,-1};
     m_playerSkinInRoom = new Tile(Options::getPlayerSkin());
+    drawDoor();
 }
 
 int Room::getId(){
@@ -193,8 +195,42 @@ void Room::drawArtilleryAttack(int x, int y, int stateOfAttack, char previousTil
     }
 }
 
-int Room::s_id = 0;
+
 
 std::vector<std::vector<Tile *>> Room::getOriginalRoom() {
     return m_originalRoom;
+}
+
+bool Room::isActive() {
+    return active;
+}
+
+void Room::setActive(bool activation) {
+    active = activation;
+}
+
+void Room::drawDoor() {
+    switch (m_id) {
+        case 1 :{
+            int index = round(m_room.at(0).size()/2);
+            delete m_room.at(0).at(index);
+            m_originalRoom.at(0).at(index) = new Tile('D');
+            m_room.at(0).at(index) = new Tile('D');
+            index = round(m_room.size()/2);
+            delete m_room.at(index).at(m_room.at(0).size()-1);
+            m_originalRoom.at(index).at(m_room.at(0).size()-1) = new Tile('D');
+            m_room.at(index).at(m_room.at(0).size()-1) = new Tile('D');
+            break;
+        }
+        case 2 :{
+            break;
+        }
+        case 3 :{
+            break;
+        }
+        case 4 :{
+            break;
+        }
+
+    }
 }
