@@ -3,3 +3,7 @@
 //
 
 #include "Skills.h"
+
+Skills::Skills() {
+
+}

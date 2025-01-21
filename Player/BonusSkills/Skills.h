@@ -13,7 +13,7 @@ class Skills {
 
     Skills();
 
-    virtual void learnSkill(Player* player);
+    virtual void learnSkill(Player* player) = 0;
 
 };
 
