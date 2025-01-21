@@ -11,6 +11,7 @@ Archer::Archer(int health, int defence, int strength) {
     m_health = health;
     m_defense = defence;
     m_strength = strength;
+    m_maxHealth = health;
     m_attackRange = 4;
 }
 

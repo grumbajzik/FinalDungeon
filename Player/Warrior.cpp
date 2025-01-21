@@ -8,6 +8,7 @@ Warrior::Warrior(int health, int defence, int strength) {
     m_health = health;
     m_defense = defence;
     m_strength = strength;
+    m_maxHealth = health;
 }
 
 void Warrior::attack(Room *room, char input) {

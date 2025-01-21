@@ -77,6 +77,7 @@ void CloseCombatEnemy::defend(Player *player) {
             if (dynamic_cast<Archer*>(player)->getBulletPositionX() == closeCombatPosition.x && dynamic_cast<Archer*>(player)->getBulletPositionY() == closeCombatPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {
+                    player->playerKillMonster();
                     monsterDied();
                 }
             }
@@ -85,6 +86,7 @@ void CloseCombatEnemy::defend(Player *player) {
             if(dynamic_cast<Warrior*>(player)->getWeaponPositionX() == closeCombatPosition.x && dynamic_cast<Warrior*>(player)->getWeaponPositionY() == closeCombatPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {
+                    player->playerKillMonster();
                     monsterDied();
                 }
             }

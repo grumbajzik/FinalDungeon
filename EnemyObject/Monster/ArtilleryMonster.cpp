@@ -72,6 +72,7 @@ void ArtilleryMonster::defend(Player *player) {
             if (dynamic_cast<Archer*>(player)->getBulletPositionX() == artilleryPosition.x && dynamic_cast<Archer*>(player)->getBulletPositionY() == artilleryPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {
+                    player->playerKillMonster();
                     monsterDied();
                 }
             }
@@ -80,6 +81,7 @@ void ArtilleryMonster::defend(Player *player) {
             if(dynamic_cast<Warrior*>(player)->getWeaponPositionX() == artilleryPosition.x && dynamic_cast<Warrior*>(player)->getWeaponPositionY() == artilleryPosition.y) {
                 m_health -= player->getStrength();
                 if (m_health <= 0) {
+                    player->playerKillMonster();
                     monsterDied();
                 }
             }
@@ -91,7 +93,6 @@ void ArtilleryMonster::monsterDied() {
     m_room->getRoom();
     delete this;
 
-//    std::cout << "Arttilery died" << std::endl;
 }
 
 

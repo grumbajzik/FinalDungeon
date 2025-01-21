@@ -13,8 +13,6 @@ Menu* Game::m_menu = new Menu();
 Room* Game::m_room = nullptr;
 MonsterFactory* Game::m_monsterFactory = nullptr;
 PlayerType Game::m_playerType;
-std::vector<ArtilleryMonster*> Game::m_artilleryMonsters = {};
-std::vector<CloseCombatEnemy*> Game::m_closeCombatEnemies = {};
 
 
 void backgroundRefresh(Room* room, Player* player) {
@@ -28,7 +26,7 @@ void Game::Run(int index) {
         switch (index) {
             case 0:
                 m_menu->runMenu();
-            //Tady to bude volat metodu která bude volat vytváření hlavního menu.
+                //Tady to bude volat metodu která bude volat vytváření hlavního menu.
                 break;
             case 1:
                 m_menu->runChosenMenu();
