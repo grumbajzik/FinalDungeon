@@ -4,11 +4,16 @@
 
 #ifndef DEFENCEPOTION_H
 #define DEFENCEPOTION_H
+#include "Potion.h"
 
 
-
-class DefencePotion {
-
+class DefencePotion : public Potion{
+    int m_defenceBonus;
+    int m_timeWhenBonusIsActive;
+    public:
+    DefencePotion();
+    void usePotion() override;
+    void cancelBonus() override;
 };
 
 
