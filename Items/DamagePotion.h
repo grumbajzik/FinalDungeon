@@ -4,11 +4,16 @@
 
 #ifndef DAMAGEPOTION_H
 #define DAMAGEPOTION_H
+#include "Potion.h"
 
 
-
-class DamagePotion {
-
+class DamagePotion : public Potion{
+    int m_damageBonus;
+    int m_timeWhenBonusIsActive;
+public:
+    DamagePotion();
+    void usePotion() override;
+    void cancelBonus() override;
 };
 
 

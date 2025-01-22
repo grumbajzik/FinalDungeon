@@ -4,11 +4,15 @@
 
 #ifndef HEALTHPOTION_H
 #define HEALTHPOTION_H
+#include "Potion.h"
 
 
-
-class HealthPotion {
-
+class HealthPotion : public Potion {
+    int m_healthRegeneration;
+public:
+    HealthPotion();
+    void usePotion() override;
+    void cancelBonus() override;
 };
 
 
