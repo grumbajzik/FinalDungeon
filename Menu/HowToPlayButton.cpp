@@ -33,6 +33,11 @@ void HowToPlayButton::runHowToPlayMenu() {
 }
 
 void HowToPlayButton::drawMenu() {
-    std::cout << "50" << std::endl;
+    std::cout << "To move with your character you have to use buttons WSAD" << std::endl;
+    std::cout << "W - move up, S - move down, A - move left, D - move right" << std::endl;
+    std::cout << "To attack/shoot you have to use arrows in the same way like at moving" << std::endl;
+    std::cout << "You can choose between two difficulties, hard and easy" << std::endl;
+    std::cout << "Also you can choose your character skin, between * , + , @ , $ " << std::endl;
+    std::cout << "You have to beat monsters also, they look like A and C, also traps are there, they look like S " << std::endl;
 }
 
