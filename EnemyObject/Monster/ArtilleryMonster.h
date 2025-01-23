@@ -5,8 +5,8 @@
 #ifndef ARTILLERYMONSTER_H
 #define ARTILLERYMONSTER_H
 #include <iostream>
-#include "../../Map/Room.h"
-#include "../../Player/Player.h"
+
+#include "Monster.h"
 #include "../../Player/Archer.h"
 #include "../../Player/Warrior.h"
 #include "../../Options.h"
@@ -18,15 +18,11 @@ struct ArtilleryPosition {
 };
 
 
-class ArtilleryMonster {
+class ArtilleryMonster : public Monster {
 
 protected:
 
-    int m_health;
-    int m_strength;
-    int m_defense;
     Room* m_room;
-    char m_artillerySign;
     ArtilleryPosition artilleryPosition;
     ArtilleryPosition attackingPosition;
     char m_artilleryAttackTile;
@@ -38,13 +34,15 @@ protected:
 
     void makeMonsterInRoom(Room* room);
 
-    void attack(Player* player,Room* room);
+    void attack(Player* player,Room* room) override;
 
-    void defend(Player* player);
+    void defend(Player* player) override;
 
     void monsterDied();
 
     void threadAttack(Player *player, Room *room, int healthAfterDmg);
+
+    bool isItemAfterKill();
 };
 
 

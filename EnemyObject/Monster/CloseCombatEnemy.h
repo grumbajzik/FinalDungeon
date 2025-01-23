@@ -5,8 +5,8 @@
 #ifndef CLOSECOMBATENEMY_H
 #define CLOSECOMBATENEMY_H
 #include <iostream>
-#include "../../Player/Player.h"
-#include "../../Map/Room.h"
+
+#include "Monster.h"
 #include "../../Player/Archer.h"
 #include "../../Player/Warrior.h"
 #include "../../Options.h"
@@ -17,14 +17,10 @@ struct CloseClombatEnemyPosition {
     int y;
 };
 
-class CloseCombatEnemy {
+class CloseCombatEnemy : public Monster{
 
     protected:
 
-    int m_health;
-    int m_strength;
-    int m_defense;
-    char m_symbol;
     CloseClombatEnemyPosition closeCombatPosition;
     Tile* m_previousTile;
     std::time_t m_lastAttack;
@@ -35,9 +31,9 @@ class CloseCombatEnemy {
 
     void makeMonsterInRoom(Room* room);
 
-    void attack(Player* player,Room* room);
+    void attack(Player* player,Room* room) override;
 
-    void defend(Player* player);
+    void defend(Player* player) override;
 
     void monsterDied();
 

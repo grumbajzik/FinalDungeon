@@ -8,7 +8,7 @@
 
 
 ArtilleryMonster::ArtilleryMonster() {
-    m_artillerySign = 'A';
+    m_symbol = 'A';
     std::time(&m_lastAttack);
 }
 
@@ -29,7 +29,7 @@ void ArtilleryMonster::makeMonsterInRoom(Room *room) {
             artilleryPosition.y = std::rand() % roomSizeY; // Náhodný sloupec
         }
     }
-    room->drawMonster(artilleryPosition.x,artilleryPosition.y,m_artillerySign);
+    room->drawMonster(artilleryPosition.x,artilleryPosition.y,m_symbol);
 }
 
 void ArtilleryMonster::attack(Player *player, Room *room) {
@@ -92,7 +92,9 @@ void ArtilleryMonster::defend(Player *player) {
 void ArtilleryMonster::monsterDied() {
     m_room->getRoom();
     delete this;
-
 }
+
+
+
 
 

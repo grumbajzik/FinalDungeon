@@ -54,4 +54,6 @@ add_executable(Dungeon main.cpp Game.cpp Game.h Menu/Button.cpp Menu/Button.h Me
         Items/DefencePotion.cpp
         Items/DefencePotion.h
         Items/IncreaseHealthPotion.cpp
-        Items/IncreaseHealthPotion.h)
+        Items/IncreaseHealthPotion.h
+        EnemyObject/Monster/Monster.cpp
+        EnemyObject/Monster/Monster.h)
