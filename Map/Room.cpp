@@ -234,3 +234,12 @@ void Room::drawDoor() {
 
     }
 }
+
+void Room::drawAttackFromBoss(int x, int y, bool attack) {
+    if (attack) {
+        m_room.at(x).at(y) = new Tile('!');
+    }else {
+        m_room.at(x).at(y) = new Tile(' ');
+    }
+}
+

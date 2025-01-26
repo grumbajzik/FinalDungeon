@@ -32,6 +32,7 @@ public:
     void setActive(bool activation);
     int getSizeOfRoomX();
     int getSizeOfRoomY();
+    void drawAttackFromBoss(int x, int y, bool attack);
 
 private:
     std::mutex m_consoleMutex;

@@ -5,6 +5,7 @@
 #include "WeakMonsterFactory.h"
 
 #include "WeakArtilleryEnemy.h"
+#include "WeakBossEnemy.h"
 #include "WeakCloseCombatEnemy.h"
 
 WeakMonsterFactory::WeakMonsterFactory() {
@@ -17,5 +18,9 @@ ArtilleryMonster *WeakMonsterFactory::createArtilleryMonster() {
 
 CloseCombatEnemy *WeakMonsterFactory::createCloseCombatEnemy() {
     return new WeakCloseCombatEnemy(100,20,20);
+}
+
+BossEnemy *WeakMonsterFactory::createBossEnemy() {
+    return new WeakBossEnemy(300,40,30);
 }
 

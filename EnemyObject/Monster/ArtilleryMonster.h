@@ -7,10 +7,7 @@
 #include <iostream>
 
 #include "Monster.h"
-#include "../../Player/Archer.h"
-#include "../../Player/Warrior.h"
-#include "../../Options.h"
-#include "../../Enums/PlayerType.h"
+
 
 struct ArtilleryPosition {
     int x;

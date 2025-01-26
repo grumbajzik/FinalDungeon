@@ -6,6 +6,10 @@
 #define MONSTER_H
 #include "../../Player/Player.h"
 #include "../../Map/Room.h"
+#include "../../Player/Archer.h"
+#include "../../Player/Warrior.h"
+#include "../../Options.h"
+#include "../../Enums/PlayerType.h"
 
 
 class Monster {
