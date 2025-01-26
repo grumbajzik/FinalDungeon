@@ -45,7 +45,7 @@ void Game::Run(int index) {
 void Game::startGame() {
     m_room = new Room();
     m_room->updatePlayerPosition(3,3,true);
-    Player* player = Player::createPlayer(m_playerType);
+    Player* player = Player::createPlayer(Options::getPlayerType());
     ArtilleryMonster* arMonster = m_monsterFactory->createArtilleryMonster();
     CloseCombatEnemy* clMonster = m_monsterFactory->createCloseCombatEnemy();
     CloseCombatEnemy*  clMonster1 = m_monsterFactory->createCloseCombatEnemy();
