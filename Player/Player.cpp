@@ -104,6 +104,29 @@ void Player::setStrength(int strength) {
     m_strength = strength;
 }
 
+void Player::usePotion(char input) {
+    switch (input) {
+        case '1': {
+            Potion* potion=m_inventory->GetPotion(1);
+            //potion->usePotion();
+            break;
+        }
+        case '2': {
+            Potion* potion=m_inventory->GetPotion(2);
+            //potion->usePotion();
+            break;
+        }
+        case '3':{
+            Potion* potion=m_inventory->GetPotion(3);
+            //potion->usePotion();
+            break;}
+
+    }
+}
+
+
+
+
 
 
 

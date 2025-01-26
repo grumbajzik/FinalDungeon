@@ -10,7 +10,14 @@
 
 
 class Inventory {
-    std::vector<Potion> m_potions;
+    std::vector<Potion*> m_potions;
+
+
+    public:
+
+    void AddPotion(Potion* potion);
+    void RemovePotion(Potion* potion);
+    Potion* GetPotion(int index);
 
 };
 

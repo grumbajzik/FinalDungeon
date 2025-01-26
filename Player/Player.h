@@ -8,6 +8,7 @@
 #include "../Map/Tile.h"
 #include "../Map/Room.h"
 #include "../Enums/PlayerType.h"
+#include "../Items/Inventory.h"
 
 
 class Room;
@@ -33,6 +34,7 @@ protected:
     int m_strength;
     Tile* playerTile;
     Position playerPosition;
+    Inventory* m_inventory;
 
     public:
 
@@ -59,6 +61,7 @@ protected:
     void setHealth(int health);
     void setDefense(int defense);
     void setStrength(int strength);
+    void usePotion(char input);
 };
 
 

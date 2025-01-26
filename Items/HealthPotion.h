@@ -11,7 +11,7 @@ class HealthPotion : public Potion {
     int m_healthRegeneration;
 public:
     HealthPotion();
-    void usePotion(Player* player) override;
+    void usePotion() override;
     void cancelBonus() override;
 };
 

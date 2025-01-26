@@ -5,7 +5,8 @@
 #ifndef POTION_H
 #define POTION_H
 
-#include "../Player/Player.h"
+
+
 
 
 class Potion {
@@ -13,12 +14,13 @@ class Potion {
     public:
 
     static Potion *createPotion();
-    virtual void usePotion(Player* player) = 0;
+    virtual void usePotion() = 0;
     virtual void cancelBonus() = 0;
 
 private:
 
     int getRandomIndex();
+
 };
 
 

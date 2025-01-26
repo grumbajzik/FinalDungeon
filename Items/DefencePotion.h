@@ -12,7 +12,7 @@ class DefencePotion : public Potion{
     int m_timeWhenBonusIsActive;
     public:
     DefencePotion();
-    void usePotion(Player* player) override;
+    void usePotion() override;
     void cancelBonus() override;
 };
 
