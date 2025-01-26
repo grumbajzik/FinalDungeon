@@ -3,3 +3,7 @@
 //
 
 #include "DefencePotion.h"
+
+DefencePotion::DefencePotion() {
+    m_defenceBonus = 10;
+}

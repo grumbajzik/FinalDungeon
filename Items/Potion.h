@@ -9,12 +9,15 @@
 
 
 class Potion {
-    int m_index;
-    Player* m_player;
+
     public:
-    static Potion *createPotion(int index);
-    virtual void usePotion() = 0;
+
+    static Potion *createPotion();
+    virtual void usePotion(Player* player) = 0;
     virtual void cancelBonus() = 0;
+
+private:
+
     int getRandomIndex();
 };
 

@@ -3,3 +3,11 @@
 //
 
 #include "DamagePotion.h"
+
+DamagePotion::DamagePotion() {
+    m_damageBonus = 20;
+}
+
+void DamagePotion::usePotion(Player* player) {
+
+}

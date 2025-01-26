@@ -3,3 +3,7 @@
 //
 
 #include "HealthPotion.h"
+
+HealthPotion::HealthPotion() {
+    m_healthRegeneration = 20;
+}
