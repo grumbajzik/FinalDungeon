@@ -2,6 +2,8 @@
 // Created by honza on 03.01.2025.
 //
 
+
+#include <future>
 #include <thread>
 #include "CloseCombatEnemy.h"
 
@@ -33,8 +35,37 @@ void CloseCombatEnemy::attack(Player *player, Room *room) {
     time(&now);
     if(std::difftime(now, m_lastAttack) > 1) {
         m_lastAttack = now;
-        std::thread clAttackThread (&CloseCombatEnemy::ThreadAttack, this, std::ref(player), std::ref(room));
-        clAttackThread.detach();
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        int healtAfterDamage = player->getHealth() - m_strength;
+        int lastX = closeCombatPosition.x;
+        int lastY = closeCombatPosition.y;
+        m_previousTile = room->getRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
+
+        if (m_previousTile->getIcon() == 'C') {
+            m_previousTile = room->getOriginalRoom().at(closeCombatPosition.x).at(closeCombatPosition.y);
+        }
+
+        if (closeCombatPosition.x != player->getPositionX()) {
+            if (closeCombatPosition.x > player->getPositionX()) {
+                closeCombatPosition.x--;
+            } else {
+                closeCombatPosition.x++;
+            }
+        }
+        if (closeCombatPosition.y != player->getPositionY()) {
+            if (closeCombatPosition.y > player->getPositionY()) {
+                closeCombatPosition.y--;
+            } else {
+                closeCombatPosition.y++;
+            }
+        }
+
+        room->updateMonsterPosition(closeCombatPosition.x, closeCombatPosition.y, lastX, lastY, m_symbol,
+                                    m_previousTile);
+        if (player->getPositionX() == closeCombatPosition.x && player->getPositionY() == closeCombatPosition.y) {
+            player->setHealth(healtAfterDamage);
+        }
+//        std::shared_future<void> clAttackFuture = std::async(std::launch::async, &CloseCombatEnemy::ThreadAttack, this, std::ref(player), std::ref(room));
     }
 }
 
