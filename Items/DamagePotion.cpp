@@ -11,3 +11,7 @@ DamagePotion::DamagePotion() {
 void DamagePotion::usePotion(Player* player) {
 
 }
+
+void DamagePotion::cancelBonus() {
+
+}

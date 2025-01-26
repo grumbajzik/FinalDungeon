@@ -7,3 +7,13 @@
 HealthPotion::HealthPotion() {
     m_healthRegeneration = 20;
 }
+
+
+void HealthPotion::usePotion(Player *player) {
+
+}
+
+
+void HealthPotion::cancelBonus() {
+
+}

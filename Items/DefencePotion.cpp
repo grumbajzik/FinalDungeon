@@ -7,3 +7,12 @@
 DefencePotion::DefencePotion() {
     m_defenceBonus = 10;
 }
+
+void DefencePotion::usePotion(Player *player) {
+
+}
+
+
+void DefencePotion::cancelBonus() {
+
+}
