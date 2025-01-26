@@ -6,6 +6,8 @@
 
 #include <conio.h>
 #include <thread>
+#include <memory>
+#include <future>
 
 #include "Options.h"
 #include "EnemyObject/Trap/StaticTrap.h"
@@ -46,24 +48,42 @@ void Game::startGame() {
     Player* player = Player::createPlayer(m_playerType);
     ArtilleryMonster* arMonster = m_monsterFactory->createArtilleryMonster();
     CloseCombatEnemy* clMonster = m_monsterFactory->createCloseCombatEnemy();
+    CloseCombatEnemy*  clMonster1 = m_monsterFactory->createCloseCombatEnemy();
+    CloseCombatEnemy*  clMonster2 = m_monsterFactory->createCloseCombatEnemy();
+    CloseCombatEnemy*  clMonster3 = m_monsterFactory->createCloseCombatEnemy();
     StaticTrap* trap = StaticTrap::createTrap();
 
     trap->makeTrapInRoom(m_room);
     arMonster->makeMonsterInRoom(m_room);
     clMonster->makeMonsterInRoom(m_room);
+    clMonster1->makeMonsterInRoom(m_room);
+    clMonster2->makeMonsterInRoom(m_room);
+    clMonster3->makeMonsterInRoom(m_room);
 
     m_room->printRoom();
     std::thread refreshThread(backgroundRefresh, m_room, player);
     std::thread inputThread(playerInput, player);
+    trap->treatPlayer(player);
+    std::vector<std::shared_ptr<CloseCombatEnemy>> enemies;
+    enemies.push_back(std::make_shared<CloseCombatEnemy>(*clMonster));
+    enemies.push_back(std::make_shared<CloseCombatEnemy>(*clMonster1));
+    enemies.push_back(std::make_shared<CloseCombatEnemy>(*clMonster2));
+    enemies.push_back(std::make_shared<CloseCombatEnemy>(*clMonster3));
+    while (player->getHealth()>0) {
+        for (auto& enemy : enemies) {
+            std::async(std::launch::async, [enemy, &player]() {
+                enemy->attack(player, m_room);
+            });
+        }
 
-    while (true/*player->getHealth()>0*/) {
-
-        arMonster->attack(player,m_room);
-        arMonster->defend(player);
+//        arMonster->attack(player,m_room);
+//        arMonster->defend(player);
 //        std::thread closeCombatThread(&CloseCombatEnemy::attack, clMonster, std::ref(player), std::ref(m_room));
-        clMonster->attack(player, m_room);
+//        clMonster->attack(player, m_room);
+//        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+//        clMonster1->attack(player, m_room);
 //        closeCombatThread.detach();
-        trap->treatPlayer(player);
+
     }
 }
 

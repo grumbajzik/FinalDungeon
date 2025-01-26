@@ -5,6 +5,7 @@
 #include "ArtilleryMonster.h"
 
 #include <thread>
+#include <future>
 
 
 ArtilleryMonster::ArtilleryMonster() {
@@ -44,8 +45,7 @@ void ArtilleryMonster::attack(Player *player, Room *room) {
         attackingPosition.y = std::rand() % roomSizeY+1;
         m_artilleryAttackTile = room->getRoom().at(attackingPosition.x).at(attackingPosition.y)->getIcon();
         m_lastAttack = now;
-        std::thread artilleryThread(&ArtilleryMonster::threadAttack, this, player, room,healthAfterDmg);
-        artilleryThread.detach();
+        std::shared_future<void> artilleryAsync = std::async(&ArtilleryMonster::threadAttack, this, player, room,healthAfterDmg);
     }
 }
 
